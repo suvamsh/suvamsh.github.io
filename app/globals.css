@@ -1,0 +1,98 @@
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/orbitron";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-canvas text-ink font-sans antialiased;
+  background-image:
+    radial-gradient(circle at 18% -10%, rgba(61, 242, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 82% 8%, rgba(76, 255, 122, 0.14), transparent 34%),
+    linear-gradient(180deg, #020406 0%, #04100b 45%, #030507 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(transparent 97%, rgba(76, 255, 122, 0.06) 100%),
+    repeating-linear-gradient(90deg, rgba(76, 255, 122, 0.06) 0, rgba(76, 255, 122, 0.06) 1px, transparent 1px, transparent 80px);
+  background-size:
+    100% 4px,
+    100% 100%;
+  opacity: 0.5;
+  z-index: 30;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(76, 255, 122, 0.08) 48%, transparent 100%);
+  transform: translateY(-100%);
+  animation: sweep 10s linear infinite;
+  z-index: 31;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+main {
+  @apply relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-8 md:px-10;
+}
+
+.surface {
+  @apply rounded-3xl border border-accent/20 bg-panel/80 backdrop-blur-md;
+  box-shadow: inset 0 1px 0 rgba(76, 255, 122, 0.1), 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.7s ease forwards;
+}
+
+.matrix-title {
+  text-shadow: 0 0 14px rgba(76, 255, 122, 0.4);
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent/85;
+}
+
+.content a {
+  @apply text-accent underline decoration-accent/35 underline-offset-4 transition;
+}
+
+.content a:hover {
+  @apply text-ocean;
+}
+
+.content p {
+  @apply mb-5 leading-8 text-[#c8f0d7];
+}
+
+.content ul {
+  @apply mb-5 list-disc space-y-2 pl-6;
+}
+
+::selection {
+  background: rgba(76, 255, 122, 0.35);
+  color: #021408;
+}
