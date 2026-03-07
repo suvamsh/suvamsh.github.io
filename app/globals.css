@@ -12,11 +12,16 @@
 body {
   @apply bg-canvas text-ink font-sans antialiased;
   background-image:
-    radial-gradient(circle at 18% -10%, rgba(61, 242, 255, 0.12), transparent 32%),
-    radial-gradient(circle at 82% 8%, rgba(76, 255, 122, 0.14), transparent 34%),
-    linear-gradient(180deg, #020406 0%, #04100b 45%, #030507 100%);
+    radial-gradient(circle at 15% -10%, rgba(47, 120, 184, 0.22), transparent 35%),
+    radial-gradient(circle at 85% 5%, rgba(105, 190, 40, 0.16), transparent 35%),
+    radial-gradient(circle at 52% 115%, rgba(165, 172, 175, 0.12), transparent 45%),
+    linear-gradient(180deg, #001326 0%, #011a33 45%, #00101f 100%);
   min-height: 100vh;
   position: relative;
+}
+
+body.home-no-scroll {
+  overflow: hidden;
 }
 
 body::before {
@@ -25,32 +30,23 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(transparent 97%, rgba(76, 255, 122, 0.06) 100%),
-    repeating-linear-gradient(90deg, rgba(76, 255, 122, 0.06) 0, rgba(76, 255, 122, 0.06) 1px, transparent 1px, transparent 80px);
+    linear-gradient(120deg, rgba(165, 172, 175, 0.08) 0%, transparent 40%),
+    linear-gradient(300deg, rgba(105, 190, 40, 0.05) 0%, transparent 35%);
   background-size:
-    100% 4px,
+    100% 100%,
     100% 100%;
-  opacity: 0.5;
-  z-index: 30;
+  opacity: 0.75;
+  z-index: 1;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent 0%, rgba(76, 255, 122, 0.08) 48%, transparent 100%);
-  transform: translateY(-100%);
-  animation: sweep 10s linear infinite;
-  z-index: 31;
-}
-
-@keyframes sweep {
+@keyframes fade-up {
   from {
-    transform: translateY(-100%);
+    opacity: 0;
+    transform: translateY(16px);
   }
   to {
-    transform: translateY(100%);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -59,8 +55,8 @@ main {
 }
 
 .surface {
-  @apply rounded-3xl border border-accent/20 bg-panel/80 backdrop-blur-md;
-  box-shadow: inset 0 1px 0 rgba(76, 255, 122, 0.1), 0 20px 40px rgba(0, 0, 0, 0.45);
+  @apply rounded-3xl border border-tertiary/25 bg-panel/80 backdrop-blur-md;
+  box-shadow: inset 0 1px 0 rgba(165, 172, 175, 0.18), 0 20px 40px rgba(0, 10, 24, 0.45);
 }
 
 .fade-up {
@@ -69,15 +65,15 @@ main {
 }
 
 .matrix-title {
-  text-shadow: 0 0 14px rgba(76, 255, 122, 0.4);
+  text-shadow: 0 0 12px rgba(47, 120, 184, 0.3), 0 0 24px rgba(105, 190, 40, 0.14);
 }
 
 .eyebrow {
-  @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent/85;
+  @apply text-xs font-semibold uppercase tracking-[0.18em] text-tertiary/90;
 }
 
 .content a {
-  @apply text-accent underline decoration-accent/35 underline-offset-4 transition;
+  @apply text-accent underline decoration-tertiary/45 underline-offset-4 transition;
 }
 
 .content a:hover {
@@ -85,7 +81,7 @@ main {
 }
 
 .content p {
-  @apply mb-5 leading-8 text-[#c8f0d7];
+  @apply mb-5 leading-8 text-ink/90;
 }
 
 .content ul {
@@ -93,6 +89,6 @@ main {
 }
 
 ::selection {
-  background: rgba(76, 255, 122, 0.35);
-  color: #021408;
+  background: rgba(105, 190, 40, 0.35);
+  color: #001326;
 }

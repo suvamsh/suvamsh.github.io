@@ -2,16 +2,15 @@ import Link from "next/link";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/pdfs/suvamsh_resume.pdf", label: "Resume" }
+  { href: "/about", label: "About me" },
+  { href: "/blog", label: "Blog" }
 ];
 
 export function SiteHeader() {
   return (
     <header className="mx-auto mt-4 w-full max-w-6xl px-5 md:px-10">
       <nav className="surface flex flex-wrap items-center justify-between gap-4 px-5 py-4 md:px-7">
-        <Link href="/" className="matrix-title animate-flicker font-display text-3xl font-semibold tracking-[0.08em] text-accent">
+        <Link href="/" className="matrix-title font-display text-3xl font-semibold tracking-[0.08em] text-accent">
           Suvamsh
         </Link>
         <ul className="flex flex-wrap items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-accent/75">

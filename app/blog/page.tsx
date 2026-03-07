@@ -13,7 +13,7 @@ export default function BlogPage() {
       <section className="fade-up surface px-6 py-8 shadow-card md:px-10">
         <p className="eyebrow">Writing</p>
         <h1 className="matrix-title mt-2 font-display text-5xl leading-tight text-accent">Blog</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-8 text-[#c0e5ce]">
+        <p className="mt-4 max-w-3xl text-lg leading-8 text-ink/90">
           Notes on projects, experiments, and ideas I am currently working through.
         </p>
       </section>
@@ -31,7 +31,7 @@ export default function BlogPage() {
                 {post.title}
               </Link>
             </h2>
-            {post.excerpt ? <p className="mt-2 text-[#b2dcc2]">{post.excerpt}</p> : null}
+            {post.excerpt ? <p className="mt-2 text-ink/85">{post.excerpt}</p> : null}
           </article>
         ))}
       </section>
