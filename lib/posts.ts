@@ -12,6 +12,7 @@ export type PostMeta = {
   excerpt: string;
   date: string;
   dateLabel: string;
+  keywords: string[];
 };
 
 function formatDate(date: string) {
@@ -49,7 +50,8 @@ export function getSortedPosts(): PostMeta[] {
         title: String(data.title ?? slug),
         excerpt: String(data.excerpt ?? ""),
         date: String(data.date ?? "1970-01-01"),
-        dateLabel: formatDate(String(data.date ?? "1970-01-01"))
+        dateLabel: formatDate(String(data.date ?? "1970-01-01")),
+        keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : []
       };
     })
     .sort((a, b) => +new Date(b.date) - +new Date(a.date));
@@ -66,6 +68,7 @@ export async function getPostBySlug(slug: string) {
     excerpt: String(data.excerpt ?? ""),
     date: String(data.date ?? "1970-01-01"),
     dateLabel: formatDate(String(data.date ?? "1970-01-01")),
+    keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
     contentHtml: processed.toString()
   };
 }

@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: PageProps) {
 
   return {
     title: `${post.title} | Suvamsh Shivaprasad`,
-    description: post.excerpt || undefined
+    description: post.excerpt || undefined,
+    keywords: post.keywords.length > 0 ? post.keywords : undefined
   };
 }
 

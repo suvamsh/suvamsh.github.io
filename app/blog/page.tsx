@@ -9,32 +9,23 @@ export default function BlogPage() {
   const posts = getSortedPosts();
 
   return (
-    <div className="space-y-8">
-      <section className="fade-up surface px-6 py-8 shadow-card md:px-10">
-        <p className="eyebrow">Writing</p>
-        <h1 className="matrix-title mt-2 font-display text-5xl leading-tight text-accent">Blog</h1>
-        <p className="mt-4 max-w-3xl text-lg leading-8 text-ink/90">
-          Notes on projects, experiments, and ideas I am currently working through.
-        </p>
-      </section>
+    <div className="fade-up surface px-6 py-8 shadow-card md:px-10">
+      <h1 className="matrix-title font-display text-5xl leading-tight text-accent">Blog</h1>
+      <p className="mt-2 text-sm text-ink/40">All opinions expressed here are my own and do not represent those of my employer or any other organization.</p>
 
-      <section className="grid gap-4">
-        {posts.map((post, index) => (
-          <article
-            key={post.slug}
-            className="fade-up surface px-6 py-6 shadow-card"
-            style={{ animationDelay: `${120 + index * 120}ms` }}
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent/65">{post.dateLabel}</p>
-            <h2 className="mt-2 font-display text-3xl font-semibold text-ink">
-              <Link href={`/blog/${post.slug}`} className="transition hover:text-accent">
+      <div className="mt-8 divide-y divide-ink/10">
+        {posts.map((post) => (
+          <article key={post.slug} className="py-5 first:pt-0 last:pb-0">
+            <Link href={`/blog/${post.slug}`} className="group block">
+              <h2 className="font-display text-2xl font-semibold text-ink transition group-hover:text-accent">
                 {post.title}
-              </Link>
-            </h2>
-            {post.excerpt ? <p className="mt-2 text-ink/85">{post.excerpt}</p> : null}
+              </h2>
+              <p className="mt-1 text-sm text-ink/50">{post.dateLabel}</p>
+              {post.excerpt ? <p className="mt-1 text-ink/70">{post.excerpt}</p> : null}
+            </Link>
           </article>
         ))}
-      </section>
+      </div>
     </div>
   );
 }
