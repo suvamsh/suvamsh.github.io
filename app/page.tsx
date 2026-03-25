@@ -33,76 +33,77 @@ function InstagramIcon() {
   );
 }
 
+const socialLinks = [
+  { href: "https://github.com/suvamsh", label: "GitHub", Icon: GitHubIcon },
+  { href: "https://www.linkedin.com/in/suvamsh-shivaprasad-5aab3860/", label: "LinkedIn", Icon: LinkedInIcon },
+  { href: "https://x.com/suvamsh", label: "X", Icon: XIcon },
+  { href: "https://www.instagram.com/suvamsh", label: "Instagram", Icon: InstagramIcon }
+];
+
 export default function HomePage() {
   return (
-    <div className="-mb-16 -mt-8 flex h-[calc(100vh-6.5rem)] items-center overflow-hidden py-8">
-      <section className="fade-up relative overflow-hidden rounded-[2rem] border border-primary/35 bg-gradient-to-br from-[#001b35] via-[#062949] to-[#00152a] p-7 text-ink shadow-card md:p-12">
-        <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-secondary/25 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-tertiary/20 blur-3xl" />
-        <div className="grid items-center gap-8 md:grid-cols-[1.45fr_auto]">
-          <div className="space-y-5 relative z-10">
-            <h1 className="matrix-title font-display text-5xl leading-[0.92] tracking-[0.03em] text-accent md:text-7xl">
-              Suvamsh Shivaprasad
-            </h1>
-            <p className="max-w-2xl text-lg leading-8 text-ink/90">i build things</p>
-            <div className="flex flex-wrap gap-3 text-ink/90">
-              <Link
-                href="https://github.com/suvamsh"
-                aria-label="GitHub"
-                className="rounded-full border border-tertiary/40 bg-panel/60 p-2 transition hover:border-secondary/70 hover:text-secondary"
-              >
-                <GitHubIcon />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/suvamsh-shivaprasad-5aab3860/"
-                aria-label="LinkedIn"
-                className="rounded-full border border-tertiary/40 bg-panel/60 p-2 transition hover:border-secondary/70 hover:text-secondary"
-              >
-                <LinkedInIcon />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link
-                href="https://x.com/suvamsh"
-                aria-label="X"
-                className="rounded-full border border-tertiary/40 bg-panel/60 p-2 transition hover:border-secondary/70 hover:text-secondary"
-              >
-                <XIcon />
-                <span className="sr-only">X</span>
-              </Link>
-              <Link
-                href="https://www.instagram.com/suvamsh"
-                aria-label="Instagram"
-                className="rounded-full border border-tertiary/40 bg-panel/60 p-2 transition hover:border-secondary/70 hover:text-secondary"
-              >
-                <InstagramIcon />
-                <span className="sr-only">Instagram</span>
-              </Link>
+    <div className="-mt-1 pb-4 sm:pb-6 lg:flex lg:min-h-[calc(100svh-10rem)] lg:items-center">
+      <section className="fade-up relative isolate w-full overflow-hidden rounded-[1.75rem] border border-primary/35 bg-gradient-to-br from-[#001b35] via-[#062949] to-[#00152a] p-5 text-ink shadow-card sm:rounded-[2rem] sm:p-7 lg:p-10 xl:p-12">
+        <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-secondary/25 blur-3xl sm:h-64 sm:w-64" />
+        <div className="pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-tertiary/20 blur-3xl sm:h-72 sm:w-72" />
+
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(240px,290px)] lg:gap-10">
+          <div className="relative z-10 space-y-6">
+            <div className="space-y-4">
+              <p className="eyebrow text-secondary">Software engineer, builder, writer</p>
+              <h1 className="matrix-title max-w-3xl font-display text-[clamp(2.6rem,13vw,5.75rem)] leading-[0.88] tracking-[0.03em] text-accent [text-wrap:balance]">
+                Suvamsh Shivaprasad
+              </h1>
+              <p className="max-w-2xl text-lg leading-8 text-ink/90 sm:text-xl">i build things</p>
+              <p className="max-w-2xl text-sm leading-7 text-ink/72 sm:text-base sm:leading-8">
+                Product, engineering, research, and applied AI.
+              </p>
             </div>
-            <div className="flex flex-wrap gap-3 pt-2">
+
+            <div className="flex flex-wrap gap-3 text-sm font-semibold text-ink/90">
+              {socialLinks.map(({ href, label, Icon }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-tertiary/35 bg-panel/55 px-4 py-2.5 transition hover:border-secondary/70 hover:bg-panel/75 hover:text-secondary"
+                >
+                  <Icon />
+                  <span>{label}</span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap">
               <Link
                 href="/blog"
-                className="rounded-full border border-secondary bg-secondary/15 px-5 py-2.5 text-sm font-semibold text-secondary transition hover:bg-secondary/25"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-secondary bg-secondary/15 px-5 py-3 text-sm font-semibold text-secondary transition hover:bg-secondary/25 sm:min-w-[10rem]"
               >
                 Read the blog
               </Link>
               <Link
                 href="/about"
-                className="rounded-full border border-tertiary/55 bg-tertiary/10 px-5 py-2.5 text-sm font-semibold text-tertiary transition hover:border-tertiary/70 hover:bg-tertiary/20"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-tertiary/55 bg-tertiary/10 px-5 py-3 text-sm font-semibold text-tertiary transition hover:border-tertiary/70 hover:bg-tertiary/20 sm:min-w-[10rem]"
               >
                 About me
               </Link>
             </div>
           </div>
-          <div className="relative z-10 mx-auto h-72 w-56 overflow-hidden rounded-3xl border border-tertiary/45 bg-panel/70 shadow-neon">
-            <Image
-              src="/images/profile.jpg"
-              alt="Portrait of Suvamsh Shivaprasad"
-              width={640}
-              height={768}
-              priority
-              className="h-full w-full object-cover"
-            />
+
+          <div className="relative z-10 mx-auto w-full max-w-[17rem] lg:max-w-none">
+            <div className="pointer-events-none absolute inset-6 rounded-[2rem] bg-accent/10 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-tertiary/35 bg-panel/70 shadow-neon">
+              <Image
+                src="/images/profile.jpg"
+                alt="Portrait of Suvamsh Shivaprasad"
+                width={640}
+                height={768}
+                priority
+                className="aspect-[4/5] h-auto w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -107,20 +107,25 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-      <section className="fade-up surface px-6 py-8 shadow-card md:px-10">
-        <h1 className="matrix-title mt-1 font-display text-4xl leading-tight text-accent md:text-5xl">Experience</h1>
-        <div className="relative mt-8 space-y-7">
-          <div className="pointer-events-none absolute bottom-1 left-2 top-3 w-px bg-accent/25 md:left-[11.5rem]" />
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(18rem,1fr)] lg:gap-8">
+      <section className="fade-up surface px-5 py-6 shadow-card sm:px-6 sm:py-8 md:px-10">
+        <h1 className="matrix-title mt-1 font-display text-4xl leading-tight text-accent sm:text-[2.75rem] md:text-5xl">
+          Experience
+        </h1>
+        <div className="relative mt-8 space-y-5 sm:space-y-6">
+          <div className="pointer-events-none absolute bottom-2 left-[0.62rem] top-4 w-px bg-accent/25 lg:left-[10.75rem]" />
           {timeline.map((item) => (
-            <article key={`${item.company}-${item.period}`} className="relative grid gap-3 md:grid-cols-[10rem_1fr] md:gap-8">
-              <p className="pl-7 text-xs font-semibold uppercase tracking-[0.14em] text-tertiary/85 md:pl-0 md:pt-1 md:text-right">
+            <article
+              key={`${item.company}-${item.period}`}
+              className="relative grid gap-3 lg:grid-cols-[9.25rem_1fr] lg:gap-6"
+            >
+              <p className="pl-8 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-tertiary/80 sm:text-xs lg:pl-0 lg:pt-3 lg:text-right">
                 {item.period}
               </p>
-              <span className="absolute left-[2px] top-1.5 h-3.5 w-3.5 rounded-full border border-accent/60 bg-panel shadow-neon md:left-[11.08rem]" />
+              <span className="absolute left-2 top-2.5 h-3.5 w-3.5 rounded-full border border-accent/60 bg-panel shadow-neon lg:left-[10.33rem]" />
 
-              <div className="ml-7 rounded-2xl border border-accent/20 bg-panel/70 p-5 md:ml-0">
-                <div className="flex flex-wrap items-start justify-between gap-3 md:flex-nowrap">
+              <div className="ml-8 rounded-[1.5rem] border border-accent/20 bg-panel/70 p-4 sm:p-5 lg:ml-0">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex items-center gap-3">
                     <div
                       className={`flex h-10 w-10 items-center justify-center rounded-xl border text-xs font-bold uppercase tracking-[0.08em] ${item.badgeClass}`}
@@ -138,12 +143,12 @@ export default function AboutPage() {
                       )}
                     </div>
                     <div>
-                      <p className="text-lg font-semibold text-ink">{item.company}</p>
-                      <p className="text-sm text-ink/80">{item.role}</p>
+                      <p className="text-base font-semibold text-ink sm:text-lg">{item.company}</p>
+                      <p className="text-sm leading-6 text-ink/80">{item.role}</p>
                     </div>
                   </div>
                   {item.location ? (
-                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-tertiary/80 md:ml-4 md:text-right">
+                    <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-tertiary/80 sm:text-xs lg:ml-4 lg:text-right">
                       {item.location}
                     </p>
                   ) : null}
@@ -154,15 +159,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <aside className="space-y-5">
-        <section className="fade-up surface px-6 py-7 shadow-card md:px-8">
-          <h2 className="font-display text-3xl font-semibold text-secondary">About Me</h2>
-          <p className="mt-3 text-lg leading-8 text-ink/90">My experience spans across product, engineering, research, and applied AI.</p>
+      <aside className="order-first space-y-5 lg:order-none lg:sticky lg:top-28 lg:self-start">
+        <section className="fade-up surface px-5 py-6 shadow-card sm:px-6 sm:py-7 md:px-8">
+          <h2 className="font-display text-3xl font-semibold text-secondary sm:text-[2.1rem]">About Me</h2>
+          <p className="mt-3 text-base leading-8 text-ink/90 sm:text-lg">
+            My experience spans across product, engineering, research, and applied AI.
+          </p>
         </section>
 
-        <section className="fade-up surface px-6 py-7 shadow-card md:px-8" style={{ animationDelay: "140ms" }}>
-          <h2 className="font-display text-2xl font-semibold text-ocean">Highlights</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-7 text-ink/90">
+        <section className="fade-up surface px-5 py-6 shadow-card sm:px-6 sm:py-7 md:px-8" style={{ animationDelay: "140ms" }}>
+          <h2 className="font-display text-2xl font-semibold text-ocean sm:text-[1.75rem]">Highlights</h2>
+          <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-ink/90 sm:text-[0.95rem]">
             {highlights.map((item) => (
               <li key={item.label}>
                 {item.href ? (

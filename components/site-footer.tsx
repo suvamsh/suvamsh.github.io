@@ -1,8 +1,8 @@
 export function SiteFooter() {
   return (
-    <footer className="mx-auto mb-8 mt-2 w-full max-w-6xl px-5 md:px-10">
-      <div className="surface px-5 py-5 md:px-7">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-tertiary/80">
+    <footer className="mx-auto mb-4 mt-4 w-full max-w-6xl px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:px-5 md:mb-8 md:px-10">
+      <div className="surface px-4 py-4 sm:px-5 md:px-7 md:py-5">
+        <p className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-tertiary/75 sm:text-xs">
           Suvamsh Shivaprasad
         </p>
       </div>
