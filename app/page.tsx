@@ -43,24 +43,25 @@ const socialLinks = [
 export default function HomePage() {
   return (
     <div className="-mt-1 pb-4 sm:pb-6 lg:flex lg:min-h-[calc(100svh-10rem)] lg:items-center">
-      <section className="fade-up relative isolate w-full overflow-hidden rounded-[1.75rem] border border-primary/35 bg-gradient-to-br from-[#001b35] via-[#062949] to-[#00152a] p-5 text-ink shadow-card sm:rounded-[2rem] sm:p-7 lg:p-10 xl:p-12">
+      <section className="fade-up relative isolate w-full overflow-hidden rounded-[1.75rem] border border-primary/35 bg-gradient-to-br from-[#001b35] via-[#062949] to-[#00152a] p-4 text-ink shadow-card sm:rounded-[2rem] sm:p-7 lg:p-10 xl:p-12">
         <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-secondary/25 blur-3xl sm:h-64 sm:w-64" />
         <div className="pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-tertiary/20 blur-3xl sm:h-72 sm:w-72" />
 
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(240px,290px)] lg:gap-10">
-          <div className="relative z-10 space-y-6">
+          <div className="relative z-10 min-w-0 space-y-6">
             <div className="space-y-4">
-              <p className="eyebrow text-secondary">Software engineer, builder, writer</p>
-              <h1 className="matrix-title max-w-3xl font-display text-[clamp(2.6rem,13vw,5.75rem)] leading-[0.88] tracking-[0.03em] text-accent [text-wrap:balance]">
-                Suvamsh Shivaprasad
+              <p className="eyebrow max-w-full text-secondary">Software engineer, builder, writer</p>
+              <h1 className="matrix-title max-w-full font-display text-[clamp(2.15rem,11vw,5.75rem)] leading-[0.9] tracking-[0.015em] text-accent sm:tracking-[0.03em]">
+                <span className="block sm:inline">Suvamsh</span>
+                <span className="block sm:ml-[0.18em] sm:inline">Shivaprasad</span>
               </h1>
-              <p className="max-w-2xl text-lg leading-8 text-ink/90 sm:text-xl">i build things</p>
-              <p className="max-w-2xl text-sm leading-7 text-ink/72 sm:text-base sm:leading-8">
+              <p className="max-w-[18rem] text-lg leading-8 text-ink/90 sm:max-w-2xl sm:text-xl">i build things</p>
+              <p className="max-w-[19rem] text-sm leading-7 text-ink/72 sm:max-w-2xl sm:text-base sm:leading-8">
                 Product, engineering, research, and applied AI.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 text-sm font-semibold text-ink/90">
+            <div className="grid min-w-0 grid-cols-2 gap-3 text-sm font-semibold text-ink/90 sm:flex sm:flex-wrap">
               {socialLinks.map(({ href, label, Icon }) => (
                 <Link
                   key={label}
@@ -68,10 +69,10 @@ export default function HomePage() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-tertiary/35 bg-panel/55 px-4 py-2.5 transition hover:border-secondary/70 hover:bg-panel/75 hover:text-secondary"
+                  className="inline-flex min-h-11 min-w-0 items-center justify-center gap-2 rounded-full border border-tertiary/35 bg-panel/55 px-3 py-2.5 transition hover:border-secondary/70 hover:bg-panel/75 hover:text-secondary sm:px-4"
                 >
                   <Icon />
-                  <span>{label}</span>
+                  <span className="truncate">{label}</span>
                 </Link>
               ))}
             </div>
@@ -92,7 +93,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-[17rem] lg:max-w-none">
+          <div className="relative z-10 mx-auto w-full max-w-[15rem] min-w-0 sm:max-w-[17rem] lg:max-w-none">
             <div className="pointer-events-none absolute inset-6 rounded-[2rem] bg-accent/10 blur-3xl" />
             <div className="relative overflow-hidden rounded-[1.75rem] border border-tertiary/35 bg-panel/70 shadow-neon">
               <Image
