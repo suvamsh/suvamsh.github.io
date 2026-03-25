@@ -69,13 +69,13 @@ export function SiteHeader() {
             aria-expanded={isMenuOpen}
             aria-controls="site-navigation"
             aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/30 bg-panel/60 text-accent transition hover:border-accent/60 hover:bg-accent/10 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/30 bg-panel/60 text-accent transition hover:border-accent/60 hover:bg-accent/10 lg:hidden"
             onClick={() => setIsMenuOpen((open) => !open)}
           >
             <MenuIcon open={isMenuOpen} />
           </button>
 
-          <ul className="hidden items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-accent/75 md:flex">
+          <ul className="hidden items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-accent/75 lg:flex">
             {navItems.map((item) => {
               const isActive = isNavItemActive(item.href);
 
@@ -102,7 +102,7 @@ export function SiteHeader() {
         <div
           aria-hidden={!isMenuOpen}
           className={clsx(
-            "grid transition-all duration-300 md:hidden",
+            "grid transition-all duration-300 lg:hidden",
             isMenuOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
           )}
         >

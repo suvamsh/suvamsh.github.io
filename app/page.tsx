@@ -42,26 +42,28 @@ const socialLinks = [
 
 export default function HomePage() {
   return (
-    <div className="-mt-1 pb-4 sm:pb-6 lg:flex lg:min-h-[calc(100svh-10rem)] lg:items-center">
-      <section className="fade-up relative isolate w-full overflow-hidden rounded-[1.75rem] border border-primary/35 bg-gradient-to-br from-[#001b35] via-[#062949] to-[#00152a] p-4 text-ink shadow-card sm:rounded-[2rem] sm:p-7 lg:p-10 xl:p-12">
+    <div className="-mt-1 pb-4 sm:pb-6 lg:pb-8">
+      <section className="fade-up relative isolate w-full overflow-hidden rounded-[1.75rem] border border-primary/35 bg-gradient-to-br from-[#001b35] via-[#062949] to-[#00152a] p-4 text-ink shadow-card sm:rounded-[2rem] sm:p-6 md:p-7 lg:p-8 xl:p-10">
         <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-secondary/25 blur-3xl sm:h-64 sm:w-64" />
         <div className="pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-tertiary/20 blur-3xl sm:h-72 sm:w-72" />
 
-        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(240px,290px)] lg:gap-10">
-          <div className="relative z-10 min-w-0 space-y-6">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:gap-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(20rem,24rem)] xl:gap-12">
+          <div className="relative z-10 min-w-0 space-y-6 lg:space-y-8">
             <div className="space-y-4">
               <p className="eyebrow max-w-full text-secondary">Software engineer, builder, writer</p>
-              <h1 className="matrix-title max-w-full font-display text-[clamp(2.15rem,11vw,5.75rem)] leading-[0.9] tracking-[0.015em] text-accent sm:tracking-[0.03em]">
-                <span className="block sm:inline">Suvamsh</span>
-                <span className="block sm:ml-[0.18em] sm:inline">Shivaprasad</span>
+              <h1 className="matrix-title max-w-[8.5ch] font-display text-[clamp(2.15rem,11vw,4.15rem)] leading-[0.88] tracking-[0.015em] text-accent md:text-[clamp(3.35rem,8vw,5rem)] lg:max-w-[9ch] lg:text-[clamp(3.8rem,5vw,5.15rem)] lg:tracking-[0.02em] 2xl:max-w-[12.8ch] 2xl:text-[clamp(4.5rem,5vw,5.6rem)]">
+                <span className="block 2xl:inline">Suvamsh</span>
+                <span className="block 2xl:ml-[0.18em] 2xl:inline">Shivaprasad</span>
               </h1>
-              <p className="max-w-[18rem] text-lg leading-8 text-ink/90 sm:max-w-2xl sm:text-xl">i build things</p>
-              <p className="max-w-[19rem] text-sm leading-7 text-ink/72 sm:max-w-2xl sm:text-base sm:leading-8">
+              <p className="max-w-[18rem] text-lg leading-8 text-ink/90 sm:max-w-2xl sm:text-xl">
+                i build things
+              </p>
+              <p className="max-w-[24rem] text-sm leading-7 text-ink/72 sm:max-w-2xl sm:text-base sm:leading-8">
                 Product, engineering, research, and applied AI.
               </p>
             </div>
 
-            <div className="grid min-w-0 grid-cols-2 gap-3 text-sm font-semibold text-ink/90 sm:flex sm:flex-wrap">
+            <div className="grid min-w-0 grid-cols-2 gap-3 text-sm font-semibold text-ink/90 sm:flex sm:flex-wrap lg:max-w-[32rem]">
               {socialLinks.map(({ href, label, Icon }) => (
                 <Link
                   key={label}
@@ -93,7 +95,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-[15rem] min-w-0 sm:max-w-[17rem] lg:max-w-none">
+          <div className="relative z-10 mx-auto w-full max-w-[15rem] min-w-0 sm:max-w-[17rem] lg:max-w-[22rem] xl:max-w-[24rem]">
             <div className="pointer-events-none absolute inset-6 rounded-[2rem] bg-accent/10 blur-3xl" />
             <div className="relative overflow-hidden rounded-[1.75rem] border border-tertiary/35 bg-panel/70 shadow-neon">
               <Image
