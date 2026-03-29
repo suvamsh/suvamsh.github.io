@@ -1,7 +1,7 @@
 ---
 title: "Man Computer Symbiosis"
 date: "2026-03-29"
-excerpt: "Typing was a useful hack. Voice is starting to look like the real interface."
+excerpt: "Talking is the most natural interface we have."
 keywords:
     [
         "voice interfaces",
