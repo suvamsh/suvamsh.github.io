@@ -50,17 +50,10 @@ export default function HomePage() {
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:gap-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(20rem,24rem)] xl:gap-12">
           <div className="relative z-10 min-w-0 space-y-6 lg:space-y-8">
             <div className="space-y-4">
-              <p className="eyebrow max-w-full text-secondary">Software engineer, builder, writer</p>
               <h1 className="matrix-title max-w-[8.5ch] font-display text-[clamp(2.15rem,11vw,4.15rem)] leading-[0.88] tracking-[0.015em] text-accent md:text-[clamp(3.35rem,8vw,5rem)] lg:max-w-[9ch] lg:text-[clamp(3.8rem,5vw,5.15rem)] lg:tracking-[0.02em] 2xl:max-w-[12.8ch] 2xl:text-[clamp(4.5rem,5vw,5.6rem)]">
                 <span className="block 2xl:inline">Suvamsh</span>
                 <span className="block 2xl:ml-[0.18em] 2xl:inline">Shivaprasad</span>
               </h1>
-              <p className="max-w-[18rem] text-lg leading-8 text-ink/90 sm:max-w-2xl sm:text-xl">
-                i build things
-              </p>
-              <p className="max-w-[24rem] text-sm leading-7 text-ink/72 sm:max-w-2xl sm:text-base sm:leading-8">
-                Product, engineering, research, and applied AI.
-              </p>
             </div>
 
             <div className="grid min-w-0 grid-cols-2 gap-3 text-sm font-semibold text-ink/90 sm:flex sm:flex-wrap lg:max-w-[32rem]">
