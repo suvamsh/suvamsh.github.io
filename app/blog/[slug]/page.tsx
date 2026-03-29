@@ -38,14 +38,14 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <article className="fade-up surface px-5 py-6 shadow-card sm:px-6 sm:py-8 md:px-10">
-      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-accent/65 sm:text-xs">
+      <p className="text-center text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-accent/65 sm:text-xs">
         {post.dateLabel}
       </p>
-      <h1 className="matrix-title mt-3 max-w-4xl font-display text-4xl leading-tight text-accent sm:text-[2.75rem] md:text-5xl">
+      <h1 className="matrix-title mt-3 text-center font-display text-4xl leading-tight text-accent sm:text-[2.75rem] md:text-5xl">
         {post.title}
       </h1>
       <div
-        className="content mt-6 max-w-3xl text-ink/90"
+        className="content mt-6 w-full text-ink/90"
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
     </article>

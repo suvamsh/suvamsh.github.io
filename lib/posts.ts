@@ -2,7 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import remarkHtml from "remark-html";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
+import rehypeStringify from "rehype-stringify";
+import remarkRehype from "remark-rehype";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
@@ -60,7 +63,12 @@ export function getSortedPosts(): PostMeta[] {
 export async function getPostBySlug(slug: string) {
   const raw = readPostFile(slug);
   const { data, content } = matter(raw);
-  const processed = await remark().use(remarkHtml).process(content);
+  const processed = await remark()
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeHighlight)
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(content);
 
   return {
     slug,

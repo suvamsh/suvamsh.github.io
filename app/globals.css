@@ -124,11 +124,65 @@ main {
 }
 
 .content pre {
-  @apply mb-6 overflow-x-auto rounded-2xl border border-accent/15 bg-[#021425]/90 p-4 text-sm text-ink/90;
+  @apply mb-6 overflow-x-auto rounded-2xl border border-accent/15 bg-[#021425]/95 p-4 text-sm text-ink/90;
+  box-shadow: inset 0 1px 0 rgba(165, 172, 175, 0.08);
 }
 
 .content pre code {
-  @apply bg-transparent p-0 text-inherit;
+  @apply block bg-transparent p-0 text-inherit;
+}
+
+.content pre code.hljs {
+  background: transparent;
+}
+
+.content .hljs-comment,
+.content .hljs-quote {
+  color: #6b839c;
+}
+
+.content .hljs-keyword,
+.content .hljs-selector-tag,
+.content .hljs-literal,
+.content .hljs-section,
+.content .hljs-link,
+.content .hljs-type {
+  color: #7dd3fc;
+}
+
+.content .hljs-title,
+.content .hljs-title.class_,
+.content .hljs-title.function_ {
+  color: #a3e635;
+}
+
+.content .hljs-string,
+.content .hljs-regexp,
+.content .hljs-symbol,
+.content .hljs-bullet {
+  color: #f9a8d4;
+}
+
+.content .hljs-number,
+.content .hljs-attribute,
+.content .hljs-addition,
+.content .hljs-variable,
+.content .hljs-template-variable {
+  color: #fdba74;
+}
+
+.content .hljs-built_in,
+.content .hljs-built_in-name {
+  color: #facc15;
+}
+
+.content .hljs-meta {
+  color: #c4b5fd;
+}
+
+.content .hljs-subst,
+.content .hljs-punctuation {
+  color: rgba(226, 232, 240, 0.88);
 }
 
 .content blockquote {
@@ -137,6 +191,15 @@ main {
 
 .content img {
   @apply mb-6 mt-4 h-auto max-w-full rounded-2xl border border-tertiary/15;
+}
+
+.content img[src$=".gif"] {
+  @apply mx-auto;
+}
+
+.content img[src$="/process.jpeg"] {
+  @apply mx-auto block h-auto;
+  width: min(100%, 28rem);
 }
 
 .content > :last-child {
