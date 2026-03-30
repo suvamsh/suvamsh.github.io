@@ -31,6 +31,8 @@ Mentioned the problem at dinner with friends, everyone shrugged with a "it is wh
 
 ### Under the Hood: What Makes It Fast
 
+Screamer is Rust calling into whisper.cpp, so everything compiles down to a native binary with no runtime overhead. On Apple Silicon, inference runs on the GPU via Metal acceleration. No Electron, no Python, no server round-trips. Just native code talking directly to your hardware. Here's what that enables:
+
 **Two warm pipelines that never block each other.** One state for live preview, one for final transcription. The live worker polls every 350ms with a non-blocking `try_lock()`, skips if busy. Final transcription uses its own state and goes straight to paste.
 
 ```rust
