@@ -4,13 +4,27 @@ date: "2026-03-29"
 excerpt: "Talking is the most natural interface we have."
 keywords:
     [
+        "voice to text",
         "voice interfaces",
+        "speech AI",
         "speech to text",
+        "AI dictation",
         "AI UX",
+        "transcription",
+        "voice transcription",
+        "speech transcription",
+        "local transcription",
+        "dictation app",
+        "macOS dictation",
+        "push to talk transcription",
+        "AI speech recognition",
         "human computer interaction",
         "man computer symbiosis",
         "Screamer",
-        "local transcription",
+        "Rust",
+        "C++",
+        "Rust app",
+        "C++ speech to text",
         "macOS app",
     ]
 ---
