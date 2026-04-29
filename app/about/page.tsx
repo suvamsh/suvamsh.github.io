@@ -126,9 +126,9 @@ export default function AboutPage() {
 
               <div className="ml-8 rounded-[1.5rem] border border-accent/20 bg-panel/70 p-4 sm:p-5 lg:ml-0">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex items-center gap-3">
+                  <div className="flex min-w-0 items-center gap-3">
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl border text-xs font-bold uppercase tracking-[0.08em] ${item.badgeClass}`}
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-xs font-bold uppercase tracking-[0.08em] ${item.badgeClass}`}
                     >
                       {item.logoPath ? (
                         <Image
@@ -142,8 +142,8 @@ export default function AboutPage() {
                         item.badge
                       )}
                     </div>
-                    <div>
-                      <p className="text-base font-semibold text-ink sm:text-lg">{item.company}</p>
+                    <div className="min-w-0">
+                      <p className="break-words text-base font-semibold text-ink sm:text-lg">{item.company}</p>
                       <p className="text-sm leading-6 text-ink/80">{item.role}</p>
                     </div>
                   </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
           <h2 className="font-display text-2xl font-semibold text-ocean sm:text-[1.75rem]">Highlights</h2>
           <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-ink/90 sm:text-[0.95rem]">
             {highlights.map((item) => (
-              <li key={item.label}>
+              <li key={item.label} className="break-words">
                 {item.href ? (
                   <Link
                     href={item.href}

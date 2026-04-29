@@ -26,6 +26,17 @@ body {
   position: relative;
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(219, 226, 230, 0.9);
+  outline-offset: 4px;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -91,10 +102,12 @@ main {
 
 .content h2 {
   @apply mt-10 text-2xl font-display font-semibold leading-tight text-accent md:text-3xl;
+  overflow-wrap: break-word;
 }
 
 .content h3 {
   @apply mt-8 text-xl font-display font-semibold leading-tight text-secondary md:text-2xl;
+  overflow-wrap: break-word;
 }
 
 .content p {
@@ -114,8 +127,12 @@ main {
   @apply list-decimal;
 }
 
-.content li,
-.content p {
+.content li {
+  overflow-wrap: break-word;
+}
+
+.content p,
+.content a {
   overflow-wrap: anywhere;
 }
 
@@ -191,6 +208,11 @@ main {
 
 .content img {
   @apply mb-6 mt-4 h-auto max-w-full rounded-2xl border border-tertiary/15;
+}
+
+.content iframe {
+  @apply rounded-2xl border border-tertiary/15;
+  max-width: 100%;
 }
 
 .content img[src$=".gif"] {

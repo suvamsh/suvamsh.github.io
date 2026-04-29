@@ -56,7 +56,7 @@ export default function HomePage() {
               </h1>
             </div>
 
-            <div className="grid min-w-0 grid-cols-2 gap-3 text-sm font-semibold text-ink/90 sm:flex sm:flex-wrap lg:max-w-[32rem]">
+            <div className="grid min-w-0 grid-cols-2 gap-3 text-sm font-semibold text-ink/90 max-[360px]:grid-cols-1 sm:flex sm:flex-wrap lg:max-w-[32rem]">
               {socialLinks.map(({ href, label, Icon }) => (
                 <Link
                   key={label}
@@ -67,7 +67,7 @@ export default function HomePage() {
                   className="inline-flex min-h-11 min-w-0 items-center justify-center gap-2 rounded-full border border-tertiary/35 bg-panel/55 px-3 py-2.5 transition hover:border-secondary/70 hover:bg-panel/75 hover:text-secondary sm:px-4"
                 >
                   <Icon />
-                  <span className="truncate">{label}</span>
+                  <span className="whitespace-nowrap">{label}</span>
                 </Link>
               ))}
             </div>

@@ -22,9 +22,9 @@ export default function BlogPage() {
           <article key={post.slug} className="py-5 first:pt-0 last:pb-0 sm:py-6">
             <Link
               href={`/blog/${post.slug}`}
-              className="group block rounded-[1.4rem] p-1 transition hover:bg-white/[0.02]"
+              className="group block rounded-[1.4rem] p-1 transition hover:bg-white/[0.02] focus-visible:bg-white/[0.03]"
             >
-              <h2 className="font-display text-2xl font-semibold leading-tight text-ink transition group-hover:text-accent sm:text-[1.8rem]">
+              <h2 className="break-words font-display text-2xl font-semibold leading-tight text-ink transition group-hover:text-accent sm:text-[1.8rem]">
                 {post.title}
               </h2>
               <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink/45 sm:text-sm">
