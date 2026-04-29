@@ -74,8 +74,14 @@ export default function HomePage() {
 
             <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap">
               <Link
-                href="/blog"
+                href="/launches"
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-secondary bg-secondary/15 px-5 py-3 text-sm font-semibold text-secondary transition hover:bg-secondary/25 sm:min-w-[10rem]"
+              >
+                See launches
+              </Link>
+              <Link
+                href="/blog"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-accent/55 bg-accent/10 px-5 py-3 text-sm font-semibold text-accent transition hover:border-accent/70 hover:bg-accent/20 sm:min-w-[10rem]"
               >
                 Read the blog
               </Link>
