@@ -16,10 +16,9 @@ html {
 body {
   @apply bg-canvas text-ink font-sans antialiased;
   background-image:
-    radial-gradient(circle at 15% -10%, rgba(47, 120, 184, 0.22), transparent 35%),
-    radial-gradient(circle at 85% 5%, rgba(105, 190, 40, 0.16), transparent 35%),
-    radial-gradient(circle at 52% 115%, rgba(165, 172, 175, 0.12), transparent 45%),
-    linear-gradient(180deg, #001326 0%, #011a33 45%, #00101f 100%);
+    repeating-linear-gradient(0deg, rgba(219, 226, 230, 0.035) 0, rgba(219, 226, 230, 0.035) 1px, transparent 1px, transparent 4px),
+    linear-gradient(180deg, #001326 0%, #011a33 46%, #00101f 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   min-height: 100svh;
   overflow-x: hidden;
@@ -42,13 +41,11 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(120deg, rgba(165, 172, 175, 0.08) 0%, transparent 40%),
-    linear-gradient(300deg, rgba(105, 190, 40, 0.05) 0%, transparent 35%);
-  background-size:
-    100% 100%,
-    100% 100%;
-  opacity: 0.75;
+  background-image:
+    linear-gradient(rgba(47, 120, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 120, 184, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.28;
   z-index: 1;
 }
 
@@ -64,15 +61,39 @@ body::before {
 }
 
 main {
-  @apply relative z-10 mx-auto w-full max-w-6xl;
+  @apply relative z-10 mx-auto w-full max-w-7xl;
   padding-inline: clamp(1rem, 4vw, 2.5rem);
   padding-top: clamp(1rem, 2vw, 2rem);
   padding-bottom: calc(clamp(4rem, 9vw, 5rem) + env(safe-area-inset-bottom));
 }
 
+body.terminal-page {
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+body.terminal-page main {
+  height: calc(100svh - 4rem);
+  padding-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+body.terminal-page .site-footer {
+  display: none;
+}
+
+body.terminal-page .terminal-shell {
+  height: 100%;
+  min-height: 0;
+}
+
+body.terminal-page .terminal-output {
+  min-height: 0;
+}
+
 .surface {
-  @apply rounded-3xl border border-tertiary/25 bg-panel/80 backdrop-blur-md;
-  box-shadow: inset 0 1px 0 rgba(165, 172, 175, 0.18), 0 20px 40px rgba(0, 10, 24, 0.45);
+  @apply rounded-lg border border-tertiary/20 bg-panel/80 backdrop-blur-md;
+  box-shadow: inset 0 1px 0 rgba(165, 172, 175, 0.14), 0 20px 40px rgba(0, 10, 24, 0.36);
 }
 
 .fade-up {
@@ -226,6 +247,371 @@ main {
 
 .content > :last-child {
   margin-bottom: 0;
+}
+
+.site-topbar {
+  @apply sticky top-0 z-30 border-b border-tertiary/15 bg-canvas/90 backdrop-blur-md;
+}
+
+.terminal-nav {
+  @apply relative mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-10;
+}
+
+.terminal-brand {
+  @apply matrix-title inline-flex items-center gap-1 text-sm font-semibold text-accent transition hover:text-ink sm:text-base;
+}
+
+.terminal-menu-button {
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-md border border-accent/30 bg-panel/60 text-accent transition hover:border-secondary/60 hover:text-secondary;
+}
+
+.terminal-nav-link {
+  @apply inline-flex min-h-9 items-center rounded-md border border-transparent px-3 py-2 text-sm font-semibold text-tertiary/75 transition hover:border-accent/35 hover:bg-accent/10 hover:text-accent;
+}
+
+.terminal-nav-link.is-active {
+  @apply border-secondary/45 bg-secondary/10 text-secondary;
+}
+
+.terminal-mobile-nav {
+  @apply absolute left-4 right-4 grid grid-rows-[0fr] overflow-hidden rounded-md border border-transparent bg-canvas/95 opacity-0 shadow-card backdrop-blur-md transition-all duration-300 sm:left-6 sm:right-6;
+  top: calc(100% + 1px);
+}
+
+.terminal-mobile-nav.is-open {
+  @apply grid-rows-[1fr] border-tertiary/20 opacity-100;
+}
+
+.terminal-mobile-nav ul {
+  @apply min-h-0 overflow-hidden p-2;
+}
+
+.site-footer {
+  @apply relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+.terminal-statusline {
+  @apply flex flex-col gap-2 border-t border-tertiary/15 pt-4 text-xs text-tertiary/70 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.terminal-statusline-links {
+  @apply flex gap-4;
+}
+
+.terminal-statusline a {
+  @apply transition hover:text-secondary;
+}
+
+.terminal-shell {
+  @apply relative isolate flex flex-col overflow-hidden rounded-lg border border-tertiary/25 shadow-card backdrop-blur-md;
+  min-height: calc(100svh - 11rem);
+  background: rgba(0, 16, 31, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(219, 226, 230, 0.12),
+    0 22px 60px rgba(0, 8, 18, 0.52);
+}
+
+.terminal-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(105, 190, 40, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(47, 120, 184, 0.12), transparent 34%),
+    repeating-linear-gradient(0deg, transparent 0, transparent 23px, rgba(165, 172, 175, 0.055) 24px);
+}
+
+.terminal-breadcrumb {
+  @apply flex min-h-12 items-center overflow-x-auto border-b border-tertiary/20 bg-canvas/70 px-3 py-2 text-xs;
+}
+
+.terminal-breadcrumb button {
+  @apply relative -mr-1 shrink-0 border border-tertiary/20 bg-panel/90 px-4 py-1.5 text-tertiary/80 transition;
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%, 9px 50%);
+}
+
+.terminal-breadcrumb button:first-child {
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%);
+}
+
+.terminal-breadcrumb button:not(:disabled):hover {
+  @apply border-accent/45 text-accent;
+}
+
+.terminal-breadcrumb button.is-active {
+  @apply z-10 border-secondary/50 bg-secondary/20 text-secondary;
+}
+
+.terminal-output {
+  @apply min-h-[34rem] flex-1 overflow-y-auto px-4 py-4 text-sm leading-7 sm:px-6 sm:py-5 md:min-h-[38rem] lg:px-8;
+}
+
+.terminal-output-entry {
+  @apply max-w-5xl;
+}
+
+.terminal-output-content.is-instant {
+  animation: fade-up 0.35s ease both;
+}
+
+.terminal-echo {
+  @apply mb-4 text-tertiary/75;
+}
+
+.terminal-prompt {
+  @apply shrink-0 text-secondary;
+}
+
+.terminal-prompt-muted {
+  @apply text-tertiary/55;
+}
+
+.terminal-pre,
+.terminal-ascii {
+  @apply m-0 overflow-x-auto whitespace-pre font-sans text-tertiary;
+}
+
+.terminal-pre {
+  @apply text-ink/90;
+}
+
+.terminal-ascii {
+  @apply max-w-full text-[0.5rem] leading-[0.9] text-accent sm:text-[0.7rem] md:text-xs;
+  text-shadow: 0 0 18px rgba(47, 120, 184, 0.32);
+}
+
+.terminal-subtitle {
+  @apply mt-4 max-w-2xl text-sm leading-7 text-ink/85 sm:text-base;
+}
+
+.terminal-tree {
+  @apply mt-5 grid gap-1 overflow-x-auto whitespace-nowrap text-sm leading-7 text-ink/90 sm:text-base;
+}
+
+.terminal-tree-root {
+  @apply text-tertiary;
+}
+
+.terminal-tree-child {
+  @apply pl-4 text-tertiary/70;
+}
+
+.terminal-tree-desc {
+  @apply text-tertiary/60;
+}
+
+.terminal-hint {
+  @apply mt-4 text-xs text-tertiary/70 sm:text-sm;
+}
+
+.terminal-command-link,
+.terminal-output a,
+.terminal-help button {
+  @apply relative inline-flex overflow-hidden text-accent underline decoration-tertiary/40 underline-offset-4 transition hover:text-secondary hover:decoration-secondary/70;
+}
+
+.terminal-command-link {
+  @apply border-0 bg-transparent p-0;
+  font: inherit;
+}
+
+.terminal-command-link::after,
+.terminal-output a::after,
+.terminal-help button::after,
+.terminal-suggestions button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateX(-120%);
+  background: linear-gradient(90deg, transparent, rgba(219, 226, 230, 0.2), transparent);
+}
+
+.terminal-command-link:hover::after,
+.terminal-output a:hover::after,
+.terminal-help button:hover::after,
+.terminal-suggestions button:hover::after {
+  animation: terminal-shimmer 0.55s ease forwards;
+}
+
+.terminal-copy {
+  @apply max-w-3xl space-y-4 text-ink/90;
+}
+
+.terminal-actions {
+  @apply flex flex-wrap gap-x-5 gap-y-2 pt-1;
+}
+
+.terminal-list {
+  @apply grid max-w-4xl gap-0 border-y border-tertiary/15;
+}
+
+.terminal-list-item {
+  @apply grid gap-3 border-b border-tertiary/15 py-4 last:border-b-0 sm:grid-cols-[1fr_auto] sm:items-start;
+}
+
+.terminal-list-item h2 {
+  @apply text-base font-semibold text-ink sm:text-lg;
+}
+
+.terminal-list-item p {
+  @apply mt-1 max-w-3xl text-sm leading-7 text-tertiary/80;
+}
+
+.terminal-table {
+  @apply grid max-w-5xl border-y border-tertiary/15;
+}
+
+.terminal-row {
+  @apply grid gap-1 border-b border-tertiary/15 py-3 last:border-b-0 md:grid-cols-[8rem_1fr_auto] md:gap-4;
+}
+
+.terminal-row-date {
+  @apply text-tertiary/65;
+}
+
+.terminal-row-main {
+  @apply min-w-0 break-words text-ink/90;
+}
+
+.terminal-row-meta {
+  @apply text-tertiary/65;
+}
+
+.terminal-swatches {
+  @apply grid max-w-3xl gap-3 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.terminal-swatches span {
+  @apply flex items-center gap-3 border border-tertiary/15 bg-panel/35 px-3 py-3 text-sm text-ink/90;
+}
+
+.terminal-swatches i {
+  @apply h-5 w-5 border border-tertiary/20;
+}
+
+.terminal-help {
+  @apply grid max-w-4xl gap-2 sm:grid-cols-2;
+}
+
+.terminal-help button {
+  @apply flex flex-col items-start rounded-md border border-tertiary/15 bg-panel/35 px-3 py-3 text-left no-underline;
+}
+
+.terminal-help button span {
+  @apply text-accent;
+}
+
+.terminal-help button small {
+  @apply mt-1 text-xs text-tertiary/70;
+}
+
+.terminal-input-area {
+  @apply relative border-t border-tertiary/20 bg-canvas/80 px-4 py-3 sm:px-6 lg:px-8;
+}
+
+.terminal-input-line {
+  @apply flex min-h-9 items-center gap-3 text-sm sm:text-base;
+}
+
+.terminal-input-wrap {
+  @apply relative min-w-0 flex-1;
+}
+
+.terminal-input-wrap input {
+  @apply relative z-10 w-full border-0 bg-transparent p-0 text-ink outline-none;
+  caret-color: transparent;
+}
+
+.terminal-input-wrap input.is-empty {
+  padding-left: 0.82em;
+}
+
+.terminal-input-wrap input::placeholder {
+  @apply text-tertiary/35;
+}
+
+.terminal-input-measure {
+  @apply invisible absolute left-0 top-0 whitespace-pre;
+}
+
+.terminal-block-cursor {
+  @apply pointer-events-none absolute left-0 top-1/2 z-0 h-[1.25em] w-[0.64em] -translate-y-1/2 bg-secondary/90;
+  animation: cursorBlink 1s ease-in-out infinite;
+}
+
+.terminal-inline-cursor {
+  @apply ml-1 inline-block h-[1.1em] w-[0.6em] translate-y-0.5 bg-secondary;
+  animation: cursorBlink 1s ease-in-out infinite;
+}
+
+.terminal-suggestions {
+  @apply absolute left-4 z-20 max-h-72 overflow-y-auto rounded-md border border-tertiary/25 bg-canvas/95 p-1 shadow-card backdrop-blur-md sm:left-6 sm:w-[32rem] lg:left-8;
+  bottom: calc(100% + 0.5rem);
+  width: min(34rem, calc(100% - 2rem));
+}
+
+.terminal-suggestions button {
+  @apply relative flex w-full items-center justify-between gap-4 overflow-hidden rounded px-3 py-2 text-left text-sm text-ink/85 transition hover:bg-accent/10;
+}
+
+.terminal-suggestions button.is-selected {
+  @apply bg-secondary/15 text-secondary;
+}
+
+.terminal-suggestions small {
+  @apply hidden text-tertiary/65 sm:inline;
+}
+
+.terminal-loader-block {
+  @apply max-w-xl space-y-2 text-sm text-tertiary/80;
+}
+
+.terminal-loader-block span {
+  @apply text-secondary;
+}
+
+.terminal-loader-bar {
+  @apply mt-5 h-3 overflow-hidden bg-panel/80;
+}
+
+.terminal-loader-bar i {
+  @apply block h-full w-24 bg-secondary;
+  animation: terminal-loader 0.9s ease-in-out infinite alternate;
+}
+
+.terminal-screensaver {
+  @apply pointer-events-none fixed inset-0 z-50 hidden bg-canvas text-secondary opacity-0 transition-opacity duration-500;
+}
+
+.terminal-screensaver.is-active {
+  @apply block opacity-100;
+}
+
+.terminal-screensaver pre {
+  @apply h-full w-full overflow-hidden whitespace-pre p-2 text-[11px] leading-[11px] sm:text-[13px] sm:leading-[13px];
+  text-shadow: 0 0 14px rgba(105, 190, 40, 0.35);
+}
+
+@keyframes terminal-shimmer {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes terminal-loader {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100vw - 8rem));
+  }
 }
 
 ::selection {

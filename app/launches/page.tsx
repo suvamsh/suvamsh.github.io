@@ -1,31 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-type Launch = {
-  title: string;
-  summary: string;
-  href: string;
-  image: string;
-  imageAlt: string;
-};
-
-const launches: Launch[] = [
-  {
-    title: "Asthi",
-    summary:
-      "Portfolio intelligence for tracking net worth, allocations, holdings-aware news, and market research across assets.",
-    href: "https://www.asthi.app",
-    image: "/images/launches/asthi.png",
-    imageAlt: "Asthi landing page screenshot showing a portfolio dashboard hero"
-  },
-  {
-    title: "Screamer",
-    summary: "A fast, free speech-to-text app that runs locally and works anywhere you type.",
-    href: "https://www.screamer.app",
-    image: "/images/launches/screamer.png",
-    imageAlt: "Screamer landing page screenshot showing the product hero and feature highlights"
-  }
-];
+import { launches } from "@/lib/launches";
 
 function ExternalLinkIcon() {
   return (
@@ -59,7 +34,7 @@ export default function LaunchesPage() {
         {launches.map((launch, index) => (
           <article
             key={launch.href}
-            className="fade-up overflow-hidden rounded-[1.75rem] border border-tertiary/25 bg-panel/72 shadow-card backdrop-blur-md sm:rounded-[2rem]"
+            className="fade-up overflow-hidden rounded-lg border border-tertiary/25 bg-panel/70 shadow-card backdrop-blur-md"
             style={{ animationDelay: `${120 + index * 110}ms` }}
           >
             <div className="grid gap-0 lg:grid-cols-[minmax(17rem,0.58fr)_minmax(0,1fr)]">
@@ -75,7 +50,7 @@ export default function LaunchesPage() {
                   href={launch.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full border border-secondary/55 bg-secondary/12 px-5 py-3 text-sm font-semibold text-secondary transition hover:border-secondary/80 hover:bg-secondary/22"
+                  className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-md border border-secondary/55 bg-secondary/10 px-5 py-3 text-sm font-semibold text-secondary transition hover:border-secondary/80 hover:bg-secondary/20"
                 >
                   Visit website
                   <ExternalLinkIcon />
