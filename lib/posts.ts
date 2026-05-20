@@ -16,19 +16,33 @@ export type PostMeta = {
   date: string;
   dateLabel: string;
   keywords: string[];
+  heroImage?: string;
+  heroImageAlt?: string;
+  heroImageWidth?: number;
+  heroImageHeight?: number;
 };
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "long",
-    day: "numeric"
+    day: "numeric",
+    timeZone: "UTC"
   }).format(new Date(date));
 }
 
 function readPostFile(slug: string) {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   return fs.readFileSync(fullPath, "utf8");
+}
+
+function optionalString(value: unknown) {
+  return typeof value === "string" && value.trim() ? value : undefined;
+}
+
+function optionalNumber(value: unknown) {
+  const numberValue = Number(value);
+  return Number.isFinite(numberValue) && numberValue > 0 ? numberValue : undefined;
 }
 
 export function getAllPostSlugs() {
@@ -54,7 +68,11 @@ export function getSortedPosts(): PostMeta[] {
         excerpt: String(data.excerpt ?? ""),
         date: String(data.date ?? "1970-01-01"),
         dateLabel: formatDate(String(data.date ?? "1970-01-01")),
-        keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : []
+        keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
+        heroImage: optionalString(data.heroImage),
+        heroImageAlt: optionalString(data.heroImageAlt),
+        heroImageWidth: optionalNumber(data.heroImageWidth),
+        heroImageHeight: optionalNumber(data.heroImageHeight)
       };
     })
     .sort((a, b) => +new Date(b.date) - +new Date(a.date));
@@ -77,6 +95,10 @@ export async function getPostBySlug(slug: string) {
     date: String(data.date ?? "1970-01-01"),
     dateLabel: formatDate(String(data.date ?? "1970-01-01")),
     keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
+    heroImage: optionalString(data.heroImage),
+    heroImageAlt: optionalString(data.heroImageAlt),
+    heroImageWidth: optionalNumber(data.heroImageWidth),
+    heroImageHeight: optionalNumber(data.heroImageHeight),
     contentHtml: processed.toString()
   };
 }
