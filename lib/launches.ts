@@ -8,6 +8,13 @@ export type Launch = {
 
 export const launches: Launch[] = [
   {
+    title: "Mathu AI",
+    summary: "Agent for hotel operations.",
+    href: "https://www.mathu.ai",
+    image: "/images/launches/mathu.png",
+    imageAlt: "Mathu AI landing page screenshot showing the hotel operations agent hero"
+  },
+  {
     title: "Asthi",
     summary:
       "Portfolio intelligence for tracking net worth, allocations, holdings-aware news, and market research across assets.",
