@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Essencia Artisan Bakery</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#faf6f0;color:#222;-webkit-text-size-adjust:100%}
+.hero{background:linear-gradient(160deg,#6b4a2f,#3a2418);color:#fff;padding:34px 20px 30px;text-align:center}
+.hero .demo{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.hero h1{font-size:30px;line-height:1.15;margin-bottom:8px}
+.hero .tag{opacity:.92;font-size:15px;margin-bottom:16px}
+.callbtn{display:inline-block;background:#c08457;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 30px;border-radius:12px;margin:6px 4px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.callbtn.ghost{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.5);box-shadow:none}
+.info{background:#fff;margin:-14px 14px 0;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.10)}
+.info .addr{font-size:14px;margin-bottom:6px}
+.info .phone{font-size:16px;font-weight:700}
+.info .phone a{color:#6b4a2f;text-decoration:none}
+.hours{margin-top:10px;font-size:13.5px}
+.hrow{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed #eee}
+.hrow:last-child{border-bottom:none}
+.menu{padding:22px 16px 10px}
+.menu h2{text-align:center;font-size:22px;margin-bottom:4px;color:#6b4a2f}
+.menu .sub{text-align:center;font-size:13px;color:#777;margin-bottom:16px}
+.cat{margin-bottom:10px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.catbtn{width:100%;background:#fff;border:none;font-size:16px;font-weight:700;color:#6b4a2f;padding:15px 16px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.chev{color:#c08457;font-size:20px}
+.items{padding:0 16px 8px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-top:1px solid #f1ece4;gap:10px}
+.iname{font-weight:600;font-size:15px}
+.idesc{font-size:12.5px;color:#777;margin-top:2px}
+.iprice{font-size:13px;color:#c08457;font-weight:600;margin-top:2px}
+.addbtn{background:#c08457;color:#fff;border:none;font-weight:700;font-size:13px;padding:9px 16px;border-radius:9px;cursor:pointer;flex-shrink:0}
+.orderbar{position:fixed;left:0;right:0;bottom:0;background:#1c1917;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 -4px 18px rgba(0,0,0,.25);transform:translateY(110%);transition:transform .25s}
+.orderbar.show{transform:none}
+.orderbar .cnt{flex:1;font-size:15px}
+.orderbar .cnt b{font-size:19px;color:#c08457}
+.viewbtn{background:#fff;color:#1c1917;border:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;cursor:pointer}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;max-height:78%;overflow:auto;padding:20px;display:none;box-shadow:0 -8px 30px rgba(0,0,0,.3)}
+.sheet.show{display:block}
+.sheet h3{font-size:19px;margin-bottom:12px}
+.lrow{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #f1ece4;font-size:15px}
+.lrow .nm{flex:1}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:30px;height:30px;border-radius:8px;border:1px solid #ddd;background:#fafafa;font-size:17px;cursor:pointer}
+.qty b{min-width:20px;text-align:center}
+.empty{color:#888;font-size:14px;text-align:center;padding:16px 0}
+.final{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.readback{font-size:13.5px;color:#555;line-height:1.6;margin-top:10px}
+footer{background:#1c1917;color:#bbb;text-align:center;font-size:12px;padding:26px 18px 90px;line-height:1.7}
+footer .fn{color:#fff;font-weight:700;font-size:14px}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none}
+.backdrop.show{display:block}
+.social{padding:0 16px 18px;text-align:center;font-size:13.5px;color:#666}
+.social a{color:#c08457;font-weight:600}
+.note{padding:0 16px 20px;text-align:center;font-size:13px;color:#666;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="hero">
+  <span class="demo">Demo website concept</span>
+  <h1>Essencia Artisan Bakery</h1>
+  <div class="tag">A bakery and chocolaterie.</div>
+  <a class="callbtn" href="tel:+15095755570">Call to Order: (509) 575-5570</a>
+</div>
+<div class="info">
+  <div class="addr">4 N 3rd St, Yakima, WA 98901</div>
+  <div class="phone"><a href="tel:+15095755570">(509) 575-5570</a></div>
+  <div class="hours"><div class="hrow"><span>Tuesday - Friday</span><span>7:00 AM - 2:00 PM</span></div><div class="hrow"><span>Saturday</span><span>7:00 AM - 1:00 PM</span></div><div class="hrow"><span>Sunday - Monday</span><span>Closed</span></div></div>
+</div>
+<div class="menu">
+  <h2>Menu</h2>
+  <div class="sub">Add items to your pickup list, then call to place the order.</div>
+      <div class="cat" data-cat="0"><button class="catbtn" onclick="toggleCat(0)">Sandwiches <span class="chev">+</span></button><div class="items" id="cat-0" style="display:none">        <div class="item"><div><div class="iname">Turkey Cucumber</div></div><button class="addbtn" data-i="0" data-c="0" onclick="addItem(0,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Rueben</div></div><button class="addbtn" data-i="0" data-c="1" onclick="addItem(0,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Spicy Pork</div></div><button class="addbtn" data-i="0" data-c="2" onclick="addItem(0,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Chicken Salad</div></div><button class="addbtn" data-i="0" data-c="3" onclick="addItem(0,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Miso Pork</div></div><button class="addbtn" data-i="0" data-c="4" onclick="addItem(0,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Turkey Pesto</div><div class="idesc">Served on Mountaineering Bread</div></div><button class="addbtn" data-i="0" data-c="5" onclick="addItem(0,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Baciatta</div></div><button class="addbtn" data-i="0" data-c="6" onclick="addItem(0,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Egg Salad</div><div class="idesc">Also served on a buttery Essencia croissant</div></div><button class="addbtn" data-i="0" data-c="7" onclick="addItem(0,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Late Breakfast Baciata</div><div class="idesc">Mayo, mozzarella, mushrooms, bacon, tomato, egg and arugula on fresh-baked bread</div></div><button class="addbtn" data-i="0" data-c="8" onclick="addItem(0,8)">Add</button></div></div></div>
+      <div class="cat" data-cat="1"><button class="catbtn" onclick="toggleCat(1)">Ficelles (Stuffed Breads) <span class="chev">+</span></button><div class="items" id="cat-1" style="display:none">        <div class="item"><div><div class="iname">Pepperoni and Mozzarella</div></div><button class="addbtn" data-i="1" data-c="0" onclick="addItem(1,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Roasted Vegetables</div></div><button class="addbtn" data-i="1" data-c="1" onclick="addItem(1,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Bacon Stuffed Pepper</div></div><button class="addbtn" data-i="1" data-c="2" onclick="addItem(1,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Mushroom and Bleu Cheese</div></div><button class="addbtn" data-i="1" data-c="3" onclick="addItem(1,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Cappicola and Havarti</div></div><button class="addbtn" data-i="1" data-c="4" onclick="addItem(1,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Tomato Avocado</div></div><button class="addbtn" data-i="1" data-c="5" onclick="addItem(1,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Salami and Havarti</div></div><button class="addbtn" data-i="1" data-c="6" onclick="addItem(1,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Roasted Mushrooms and Peppers</div></div><button class="addbtn" data-i="1" data-c="7" onclick="addItem(1,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Capicola Bacon and Mozzarella</div></div><button class="addbtn" data-i="1" data-c="8" onclick="addItem(1,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Farmer&#x27;s Market Surprise</div><div class="idesc">Roasted vegetables</div></div><button class="addbtn" data-i="1" data-c="9" onclick="addItem(1,9)">Add</button></div></div></div>
+      <div class="cat" data-cat="2"><button class="catbtn" onclick="toggleCat(2)">Soups <span class="chev">+</span></button><div class="items" id="cat-2" style="display:none">        <div class="item"><div><div class="iname">Sweet Potato Curry</div></div><button class="addbtn" data-i="2" data-c="0" onclick="addItem(2,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Potato Leek</div></div><button class="addbtn" data-i="2" data-c="1" onclick="addItem(2,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Chicken Sausage and Rosemary</div></div><button class="addbtn" data-i="2" data-c="2" onclick="addItem(2,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Chicken Rosemary</div></div><button class="addbtn" data-i="2" data-c="3" onclick="addItem(2,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Asparagus Cheddar Soup</div></div><button class="addbtn" data-i="2" data-c="4" onclick="addItem(2,4)">Add</button></div></div></div>
+      <div class="cat" data-cat="3"><button class="catbtn" onclick="toggleCat(3)">Salads <span class="chev">+</span></button><div class="items" id="cat-3" style="display:none">        <div class="item"><div><div class="iname">Orange Spring Mix</div></div><button class="addbtn" data-i="3" data-c="0" onclick="addItem(3,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Fruit Salad</div></div><button class="addbtn" data-i="3" data-c="1" onclick="addItem(3,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Summer Sausage Pepperoncini Potato Salad</div></div><button class="addbtn" data-i="3" data-c="2" onclick="addItem(3,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Nectarine and Burrata Spring Mix</div></div><button class="addbtn" data-i="3" data-c="3" onclick="addItem(3,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Watermelon and Peach Thai Basil</div></div><button class="addbtn" data-i="3" data-c="4" onclick="addItem(3,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Spicy Panzanella</div></div><button class="addbtn" data-i="3" data-c="5" onclick="addItem(3,5)">Add</button></div></div></div>
+      <div class="cat" data-cat="4"><button class="catbtn" onclick="toggleCat(4)">Panini <span class="chev">+</span></button><div class="items" id="cat-4" style="display:none">        <div class="item"><div><div class="iname">3 Cheese</div></div><button class="addbtn" data-i="4" data-c="0" onclick="addItem(4,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Ham Egg and Cheese</div><div class="idesc">Our most popular panini. Even the bun is made in house and includes real eggs. None of that powdered stuff.</div></div><button class="addbtn" data-i="4" data-c="1" onclick="addItem(4,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Salmon</div></div><button class="addbtn" data-i="4" data-c="2" onclick="addItem(4,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Mushroom</div></div><button class="addbtn" data-i="4" data-c="3" onclick="addItem(4,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Beef and Blue</div></div><button class="addbtn" data-i="4" data-c="4" onclick="addItem(4,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Cuban</div></div><button class="addbtn" data-i="4" data-c="5" onclick="addItem(4,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Mediterranean</div></div><button class="addbtn" data-i="4" data-c="6" onclick="addItem(4,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Chicken and Roasted Red Pepper</div></div><button class="addbtn" data-i="4" data-c="7" onclick="addItem(4,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Hippie Wrap</div></div><button class="addbtn" data-i="4" data-c="8" onclick="addItem(4,8)">Add</button></div></div></div>
+      <div class="cat" data-cat="5"><button class="catbtn" onclick="toggleCat(5)">Breads <span class="chev">+</span></button><div class="items" id="cat-5" style="display:none">        <div class="item"><div><div class="iname">Ryan&#x27;s Triple Threat Bread</div></div><button class="addbtn" data-i="5" data-c="0" onclick="addItem(5,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Mountaineering Bread</div></div><button class="addbtn" data-i="5" data-c="1" onclick="addItem(5,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Raw Pizza Dough</div><div class="idesc">Take home for homemade pizza night</div></div><button class="addbtn" data-i="5" data-c="2" onclick="addItem(5,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Garlic Pretzel Rolls</div></div><button class="addbtn" data-i="5" data-c="3" onclick="addItem(5,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Brioch Lavain</div><div class="idesc">Topped with crunchy coconut goodness</div></div><button class="addbtn" data-i="5" data-c="4" onclick="addItem(5,4)">Add</button></div></div></div>
+      <div class="cat" data-cat="6"><button class="catbtn" onclick="toggleCat(6)">Pastries and Desserts <span class="chev">+</span></button><div class="items" id="cat-6" style="display:none">        <div class="item"><div><div class="iname">Almond Croissants</div></div><button class="addbtn" data-i="6" data-c="0" onclick="addItem(6,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Caramelized Kouign-amann</div></div><button class="addbtn" data-i="6" data-c="1" onclick="addItem(6,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Butter Croissants</div></div><button class="addbtn" data-i="6" data-c="2" onclick="addItem(6,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Ham and Cheese Croissant</div></div><button class="addbtn" data-i="6" data-c="3" onclick="addItem(6,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Beehive Croissant Pastry</div></div><button class="addbtn" data-i="6" data-c="4" onclick="addItem(6,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Tropical Lilikoi Coconut Kouign</div></div><button class="addbtn" data-i="6" data-c="5" onclick="addItem(6,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Lucky Lime and Cranberry Mousse Cake</div></div><button class="addbtn" data-i="6" data-c="6" onclick="addItem(6,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Cinnamon Rolls</div></div><button class="addbtn" data-i="6" data-c="7" onclick="addItem(6,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Scones</div></div><button class="addbtn" data-i="6" data-c="8" onclick="addItem(6,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Cupcakes</div></div><button class="addbtn" data-i="6" data-c="9" onclick="addItem(6,9)">Add</button></div>
+        <div class="item"><div><div class="iname">Cream Cheese Brownies</div></div><button class="addbtn" data-i="6" data-c="10" onclick="addItem(6,10)">Add</button></div>
+        <div class="item"><div><div class="iname">Pecan Pie</div></div><button class="addbtn" data-i="6" data-c="11" onclick="addItem(6,11)">Add</button></div>
+        <div class="item"><div><div class="iname">Stuffed Pretzel</div></div><button class="addbtn" data-i="6" data-c="12" onclick="addItem(6,12)">Add</button></div>
+        <div class="item"><div><div class="iname">German Chocolate Sticky Buns</div></div><button class="addbtn" data-i="6" data-c="13" onclick="addItem(6,13)">Add</button></div>
+        <div class="item"><div><div class="iname">German Chocolate Cupcakes</div></div><button class="addbtn" data-i="6" data-c="14" onclick="addItem(6,14)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemon Poppyseed Cheesecake</div></div><button class="addbtn" data-i="6" data-c="15" onclick="addItem(6,15)">Add</button></div>
+        <div class="item"><div><div class="iname">Flourless Chocolate Cake</div></div><button class="addbtn" data-i="6" data-c="16" onclick="addItem(6,16)">Add</button></div>
+        <div class="item"><div><div class="iname">Fruit Tart</div></div><button class="addbtn" data-i="6" data-c="17" onclick="addItem(6,17)">Add</button></div>
+        <div class="item"><div><div class="iname">Macaroons</div></div><button class="addbtn" data-i="6" data-c="18" onclick="addItem(6,18)">Add</button></div>
+        <div class="item"><div><div class="iname">Biscotti</div></div><button class="addbtn" data-i="6" data-c="19" onclick="addItem(6,19)">Add</button></div>
+        <div class="item"><div><div class="iname">Spinach and Feta Quiche</div></div><button class="addbtn" data-i="6" data-c="20" onclick="addItem(6,20)">Add</button></div></div></div>
+      <div class="cat" data-cat="7"><button class="catbtn" onclick="toggleCat(7)">Musubi Fridays <span class="chev">+</span></button><div class="items" id="cat-7" style="display:none">        <div class="item"><div><div class="iname">Salmon Musubi</div></div><button class="addbtn" data-i="7" data-c="0" onclick="addItem(7,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Spam and Egg Musubi</div></div><button class="addbtn" data-i="7" data-c="1" onclick="addItem(7,1)">Add</button></div></div></div>
+      <div class="cat" data-cat="8"><button class="catbtn" onclick="toggleCat(8)">Drinks <span class="chev">+</span></button><div class="items" id="cat-8" style="display:none">        <div class="item"><div><div class="iname">Espresso Bar</div></div><button class="addbtn" data-i="8" data-c="0" onclick="addItem(8,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Coffee</div></div><button class="addbtn" data-i="8" data-c="1" onclick="addItem(8,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Drip Coffee</div></div><button class="addbtn" data-i="8" data-c="2" onclick="addItem(8,2)">Add</button></div>
+        <div class="item"><div><div class="iname">House-Made Lemonade</div></div><button class="addbtn" data-i="8" data-c="3" onclick="addItem(8,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Lavender Lemonade</div></div><button class="addbtn" data-i="8" data-c="4" onclick="addItem(8,4)">Add</button></div>
+        <div class="item"><div><div class="iname">German Chocolate Mocha</div></div><button class="addbtn" data-i="8" data-c="5" onclick="addItem(8,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Milk Teas</div></div><button class="addbtn" data-i="8" data-c="6" onclick="addItem(8,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Italian Sodas</div></div><button class="addbtn" data-i="8" data-c="7" onclick="addItem(8,7)">Add</button></div></div></div>
+</div>
+<div class="social">Find us: <a href="https://www.facebook.com/EssenciaArtisanBakery" target="_blank" rel="noopener">Facebook</a></div>
+<div class="note">I'm Suvamsh, I build websites for local bakeries. This is a free demo site concept for Essencia Artisan Bakery. Prices are confirmed with the owner before a real site goes live. Ordering is by phone only.</div>
+<div class="backdrop" id="backdrop" onclick="closeSheet()"></div>
+<div class="sheet" id="sheet">
+  <h3>Your pickup list</h3>
+  <div id="list"></div>
+  <div id="readback" class="readback"></div>
+  <div class="final">
+    <a class="callbtn" id="finalcall" href="tel:+15095755570">Call Essencia Artisan Bakery to Order</a>
+    <button class="callbtn ghost" style="background:#eee;color:#333;box-shadow:none;border:none" onclick="closeSheet()">Keep browsing</button>
+  </div>
+</div>
+<div class="orderbar" id="orderbar">
+  <div class="cnt"><b id="count">0</b> item<span id="pl">s</span> in your pickup list</div>
+  <button class="viewbtn" onclick="openSheet()">Review</button>
+</div>
+<footer>
+  <div class="fn">Essencia Artisan Bakery</div>
+  4 N 3rd St, Yakima, WA 98901<br>
+  <a href="tel:+15095755570" style="color:#c08457">(509) 575-5570</a><br><br>
+  Demo preview built as a website concept. Menu, hours, and prices are confirmed with the owner.<br>
+  Pickup orders are placed by phone.
+</footer>
+<script>
+var MENU = [{"category": "Sandwiches", "items": [{"name": "Turkey Cucumber"}, {"name": "Rueben"}, {"name": "Spicy Pork"}, {"name": "Chicken Salad"}, {"name": "Miso Pork"}, {"name": "Turkey Pesto", "desc": "Served on Mountaineering Bread"}, {"name": "Baciatta"}, {"name": "Egg Salad", "desc": "Also served on a buttery Essencia croissant"}, {"name": "Late Breakfast Baciata", "desc": "Mayo, mozzarella, mushrooms, bacon, tomato, egg and arugula on fresh-baked bread"}]}, {"category": "Ficelles (Stuffed Breads)", "items": [{"name": "Pepperoni and Mozzarella"}, {"name": "Roasted Vegetables"}, {"name": "Bacon Stuffed Pepper"}, {"name": "Mushroom and Bleu Cheese"}, {"name": "Cappicola and Havarti"}, {"name": "Tomato Avocado"}, {"name": "Salami and Havarti"}, {"name": "Roasted Mushrooms and Peppers"}, {"name": "Capicola Bacon and Mozzarella"}, {"name": "Farmer's Market Surprise", "desc": "Roasted vegetables"}]}, {"category": "Soups", "items": [{"name": "Sweet Potato Curry"}, {"name": "Potato Leek"}, {"name": "Chicken Sausage and Rosemary"}, {"name": "Chicken Rosemary"}, {"name": "Asparagus Cheddar Soup"}]}, {"category": "Salads", "items": [{"name": "Orange Spring Mix"}, {"name": "Fruit Salad"}, {"name": "Summer Sausage Pepperoncini Potato Salad"}, {"name": "Nectarine and Burrata Spring Mix"}, {"name": "Watermelon and Peach Thai Basil"}, {"name": "Spicy Panzanella"}]}, {"category": "Panini", "items": [{"name": "3 Cheese"}, {"name": "Ham Egg and Cheese", "desc": "Our most popular panini. Even the bun is made in house and includes real eggs. None of that powdered stuff."}, {"name": "Salmon"}, {"name": "Mushroom"}, {"name": "Beef and Blue"}, {"name": "Cuban"}, {"name": "Mediterranean"}, {"name": "Chicken and Roasted Red Pepper"}, {"name": "Hippie Wrap"}]}, {"category": "Breads", "items": [{"name": "Ryan's Triple Threat Bread"}, {"name": "Mountaineering Bread"}, {"name": "Raw Pizza Dough", "desc": "Take home for homemade pizza night"}, {"name": "Garlic Pretzel Rolls"}, {"name": "Brioch Lavain", "desc": "Topped with crunchy coconut goodness"}]}, {"category": "Pastries and Desserts", "items": [{"name": "Almond Croissants"}, {"name": "Caramelized Kouign-amann"}, {"name": "Butter Croissants"}, {"name": "Ham and Cheese Croissant"}, {"name": "Beehive Croissant Pastry"}, {"name": "Tropical Lilikoi Coconut Kouign"}, {"name": "Lucky Lime and Cranberry Mousse Cake"}, {"name": "Cinnamon Rolls"}, {"name": "Scones"}, {"name": "Cupcakes"}, {"name": "Cream Cheese Brownies"}, {"name": "Pecan Pie"}, {"name": "Stuffed Pretzel"}, {"name": "German Chocolate Sticky Buns"}, {"name": "German Chocolate Cupcakes"}, {"name": "Lemon Poppyseed Cheesecake"}, {"name": "Flourless Chocolate Cake"}, {"name": "Fruit Tart"}, {"name": "Macaroons"}, {"name": "Biscotti"}, {"name": "Spinach and Feta Quiche"}]}, {"category": "Musubi Fridays", "items": [{"name": "Salmon Musubi"}, {"name": "Spam and Egg Musubi"}]}, {"category": "Drinks", "items": [{"name": "Espresso Bar"}, {"name": "Coffee"}, {"name": "Drip Coffee"}, {"name": "House-Made Lemonade"}, {"name": "Lavender Lemonade"}, {"name": "German Chocolate Mocha"}, {"name": "Milk Teas"}, {"name": "Italian Sodas"}]}];
+var list = {};
+function totalCount(){var n=0;for(var k in list)n+=list[k];return n;}
+function addItem(c,i){var k=c+":"+i;list[k]=(list[k]||0)+1;updateBar();}
+function changeQty(k,d){list[k]=(list[k]||0)+d;if(list[k]<=0)delete list[k];updateBar();renderList();}
+function updateBar(){var n=totalCount();document.getElementById("count").textContent=n;
+document.getElementById("pl").textContent=(n==1?"":"s");
+var bar=document.getElementById("orderbar");
+if(n>0)bar.classList.add("show");else bar.classList.remove("show");
+var fc=document.getElementById("finalcall");
+var items=[];for(var k in list){var p=k.split(":"),it=MENU[p[0]].items[p[1]];items.push(list[k]+"x "+it.name);}
+fc.textContent="Call "+fc.dataset.name+" to Order ("+n+" item"+(n==1?"":"s")+")";
+var rb=document.getElementById("readback");rb.textContent="When you call, read this back: "+items.join(", ")+".";}
+function renderList(){var box=document.getElementById("list");var ks=Object.keys(list);
+if(!ks.length){box.innerHTML='<div class="empty">Your list is empty. Tap Add on any menu item.</div>';return;}
+box.innerHTML=ks.map(function(k){var p=k.split(":"),it=MENU[p[0]].items[p[1]];
+return '<div class="lrow"><div class="nm">'+escHtml(it.name)+'</div><div class="qty"><button onclick="changeQty(\''+k+'\',-1)">-</button><b>'+list[k]+'</b><button onclick="changeQty(\''+k+'\',1)">+</button></div></div>';}).join("");}
+function escHtml(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function openSheet(){renderList();document.getElementById("sheet").classList.add("show");document.getElementById("backdrop").classList.add("show");}
+function closeSheet(){document.getElementById("sheet").classList.remove("show");document.getElementById("backdrop").classList.remove("show");}
+function toggleCat(i){var el=document.getElementById("cat-"+i);var btn=el.previousElementSibling;
+var open=el.style.display!=="none";el.style.display=open?"none":"block";
+btn.querySelector(".chev").textContent=open?"+":"-";}
+document.getElementById("finalcall").dataset.name="Essencia Artisan Bakery";
+</script>
+</body>
+</html>

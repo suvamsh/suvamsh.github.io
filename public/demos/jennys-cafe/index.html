@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jenny&#x27;s Cafe</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f8f4ee;color:#222;-webkit-text-size-adjust:100%}
+.hero{background:linear-gradient(160deg,#4a3728,#3a2418);color:#fff;padding:34px 20px 30px;text-align:center}
+.hero .demo{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.hero h1{font-size:30px;line-height:1.15;margin-bottom:8px}
+.hero .tag{opacity:.92;font-size:15px;margin-bottom:16px}
+.callbtn{display:inline-block;background:#b08968;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 30px;border-radius:12px;margin:6px 4px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.callbtn.ghost{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.5);box-shadow:none}
+.info{background:#fff;margin:-14px 14px 0;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.10)}
+.info .addr{font-size:14px;margin-bottom:6px}
+.info .phone{font-size:16px;font-weight:700}
+.info .phone a{color:#4a3728;text-decoration:none}
+.hours{margin-top:10px;font-size:13.5px}
+.hrow{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed #eee}
+.hrow:last-child{border-bottom:none}
+.menu{padding:22px 16px 10px}
+.menu h2{text-align:center;font-size:22px;margin-bottom:4px;color:#4a3728}
+.menu .sub{text-align:center;font-size:13px;color:#777;margin-bottom:16px}
+.cat{margin-bottom:10px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.catbtn{width:100%;background:#fff;border:none;font-size:16px;font-weight:700;color:#4a3728;padding:15px 16px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.chev{color:#b08968;font-size:20px}
+.items{padding:0 16px 8px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-top:1px solid #f1ece4;gap:10px}
+.iname{font-weight:600;font-size:15px}
+.idesc{font-size:12.5px;color:#777;margin-top:2px}
+.iprice{font-size:13px;color:#b08968;font-weight:600;margin-top:2px}
+.addbtn{background:#b08968;color:#fff;border:none;font-weight:700;font-size:13px;padding:9px 16px;border-radius:9px;cursor:pointer;flex-shrink:0}
+.orderbar{position:fixed;left:0;right:0;bottom:0;background:#1c1917;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 -4px 18px rgba(0,0,0,.25);transform:translateY(110%);transition:transform .25s}
+.orderbar.show{transform:none}
+.orderbar .cnt{flex:1;font-size:15px}
+.orderbar .cnt b{font-size:19px;color:#b08968}
+.viewbtn{background:#fff;color:#1c1917;border:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;cursor:pointer}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;max-height:78%;overflow:auto;padding:20px;display:none;box-shadow:0 -8px 30px rgba(0,0,0,.3)}
+.sheet.show{display:block}
+.sheet h3{font-size:19px;margin-bottom:12px}
+.lrow{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #f1ece4;font-size:15px}
+.lrow .nm{flex:1}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:30px;height:30px;border-radius:8px;border:1px solid #ddd;background:#fafafa;font-size:17px;cursor:pointer}
+.qty b{min-width:20px;text-align:center}
+.empty{color:#888;font-size:14px;text-align:center;padding:16px 0}
+.final{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.readback{font-size:13.5px;color:#555;line-height:1.6;margin-top:10px}
+footer{background:#1c1917;color:#bbb;text-align:center;font-size:12px;padding:26px 18px 90px;line-height:1.7}
+footer .fn{color:#fff;font-weight:700;font-size:14px}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none}
+.backdrop.show{display:block}
+.social{padding:0 16px 18px;text-align:center;font-size:13.5px;color:#666}
+.social a{color:#b08968;font-weight:600}
+.note{padding:0 16px 20px;text-align:center;font-size:13px;color:#666;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="hero">
+  <span class="demo">Demo website concept</span>
+  <h1>Jenny&#x27;s Cafe</h1>
+  <div class="tag">Serving breakfast and lunch since 2002.</div>
+  <a class="callbtn" href="tel:+15099288055">Call to Order: (509) 928-8055</a>
+</div>
+<div class="info">
+  <div class="addr">9425 E Sprague Ave, Spokane Valley, WA 99206</div>
+  <div class="phone"><a href="tel:+15099288055">(509) 928-8055</a></div>
+  <div class="hours"><div class="hrow"><span>Monday - Saturday</span><span>6:30 AM - 2:00 PM</span></div><div class="hrow"><span>Sunday</span><span>7:00 AM - 2:00 PM</span></div></div>
+</div>
+<div class="menu">
+  <h2>Menu</h2>
+  <div class="sub">Add items to your pickup list, then call to place the order.</div>
+      <div class="cat" data-cat="0"><button class="catbtn" onclick="toggleCat(0)">Popular Breakfasts <span class="chev">+</span></button><div class="items" id="cat-0" style="display:none">        <div class="item"><div><div class="iname">Eggs Benedict</div><div class="idesc">Two eggs layered with ham on an English muffin, smothered in hollandaise sauce and hash browns</div></div><button class="addbtn" data-i="0" data-c="0" onclick="addItem(0,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Country Fried Steak</div><div class="idesc">Country fried steak covered in sausage gravy, served with two eggs, toast and hash browns</div></div><button class="addbtn" data-i="0" data-c="1" onclick="addItem(0,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Meat Lovers Skillet</div><div class="idesc">Two scrambled eggs, bacon, sausage, ham and cheddar cheese</div></div><button class="addbtn" data-i="0" data-c="2" onclick="addItem(0,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Build Your Own</div><div class="idesc">Two eggs plus your choice of meat and side</div></div><button class="addbtn" data-i="0" data-c="3" onclick="addItem(0,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Dad&#x27;s Favorite</div></div><button class="addbtn" data-i="0" data-c="4" onclick="addItem(0,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Buried Biscuit</div></div><button class="addbtn" data-i="0" data-c="5" onclick="addItem(0,5)">Add</button></div>
+        <div class="item"><div><div class="iname">The BB &amp; G</div></div><button class="addbtn" data-i="0" data-c="6" onclick="addItem(0,6)">Add</button></div>
+        <div class="item"><div><div class="iname">The Taco</div></div><button class="addbtn" data-i="0" data-c="7" onclick="addItem(0,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Chicken Half Waffle</div></div><button class="addbtn" data-i="0" data-c="8" onclick="addItem(0,8)">Add</button></div>
+        <div class="item"><div><div class="iname">The Grandpa Bob</div></div><button class="addbtn" data-i="0" data-c="9" onclick="addItem(0,9)">Add</button></div>
+        <div class="item"><div><div class="iname">Kelsey&#x27;s Loaded Breakfast Sandwich</div></div><button class="addbtn" data-i="0" data-c="10" onclick="addItem(0,10)">Add</button></div>
+        <div class="item"><div><div class="iname">Hearty Burrito</div></div><button class="addbtn" data-i="0" data-c="11" onclick="addItem(0,11)">Add</button></div>
+        <div class="item"><div><div class="iname">Marathon Man</div></div><button class="addbtn" data-i="0" data-c="12" onclick="addItem(0,12)">Add</button></div>
+        <div class="item"><div><div class="iname">Kendrick&#x27;s Lil Bit</div></div><button class="addbtn" data-i="0" data-c="13" onclick="addItem(0,13)">Add</button></div>
+        <div class="item"><div><div class="iname">Momma&#x27;s Breakfast Burrito</div></div><button class="addbtn" data-i="0" data-c="14" onclick="addItem(0,14)">Add</button></div>
+        <div class="item"><div><div class="iname">Jenny&#x27;s Kitchen Sink</div><div class="idesc">Eggs scrambled with mushrooms, green peppers, onions, tomatoes, bacon, sausage and hash browns, topped with cheese, served with toast</div></div><button class="addbtn" data-i="0" data-c="15" onclick="addItem(0,15)">Add</button></div></div></div>
+      <div class="cat" data-cat="1"><button class="catbtn" onclick="toggleCat(1)">Omelets <span class="chev">+</span></button><div class="items" id="cat-1" style="display:none">        <div class="item"><div><div class="iname">The Jenny Benny</div><div class="idesc">3 eggs filled with ham, onions and cheddar cheese, covered with hollandaise sauce and fresh tomatoes</div></div><button class="addbtn" data-i="1" data-c="0" onclick="addItem(1,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Grandma Edie&#x27;s Chicken Club</div><div class="idesc">3 eggs, grilled chicken, bacon, tomatoes, cheddar and jack cheese</div></div><button class="addbtn" data-i="1" data-c="1" onclick="addItem(1,1)">Add</button></div></div></div>
+      <div class="cat" data-cat="2"><button class="catbtn" onclick="toggleCat(2)">Skillet Sensations <span class="chev">+</span></button><div class="items" id="cat-2" style="display:none">        <div class="item"><div><div class="iname">Breakfast Skillet</div><div class="idesc">Two scrambled eggs, bacon, sausage, ham, onions, mushrooms, green peppers and cheddar cheese</div></div><button class="addbtn" data-i="2" data-c="0" onclick="addItem(2,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Savory Skillet</div><div class="idesc">Country fried steak, green peppers and onions, covered in gravy and cheddar cheese, served with 2 eggs over easy</div></div><button class="addbtn" data-i="2" data-c="1" onclick="addItem(2,1)">Add</button></div></div></div>
+      <div class="cat" data-cat="3"><button class="catbtn" onclick="toggleCat(3)">Sweet Treats <span class="chev">+</span></button><div class="items" id="cat-3" style="display:none">        <div class="item"><div><div class="iname">Short Stack</div><div class="idesc">Three sweet cream pancakes with butter, warm maple syrup, powdered sugar and whipped cream</div></div><button class="addbtn" data-i="3" data-c="0" onclick="addItem(3,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Kiana&#x27;s Strawberry Waffle</div><div class="idesc">Belgium waffle topped with ice cream, strawberries and whipped cream</div></div><button class="addbtn" data-i="3" data-c="1" onclick="addItem(3,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Cinnamon Roll</div><div class="idesc">Gooey cinnamon roll with cream cheese frosting, praline pecans, butter, caramel drizzle and cinnamon</div></div><button class="addbtn" data-i="3" data-c="2" onclick="addItem(3,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Jade&#x27;s Cinnamon Roll Waffle</div><div class="idesc">Cinnamon waffle with cream cheese frosting, praline pecans, whipped cream, cinnamon and caramel drizzle</div></div><button class="addbtn" data-i="3" data-c="3" onclick="addItem(3,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Jacie&#x27;s Goin&#x27; Bananas Waffle</div><div class="idesc">Belgium waffle with peanut butter, crisp bacon bits, ice cream, whipped cream, praline pecans and caramel</div></div><button class="addbtn" data-i="3" data-c="4" onclick="addItem(3,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Crepe</div><div class="idesc">Three classic crepes filled with your choice of filling, dusted with powdered sugar</div></div><button class="addbtn" data-i="3" data-c="5" onclick="addItem(3,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Belgium Waffle</div><div class="idesc">House made waffle with butter and your choice of homemade syrup</div></div><button class="addbtn" data-i="3" data-c="6" onclick="addItem(3,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Kobe&#x27;s Banana Split Waffle</div><div class="idesc">Blueberry, strawberry, apple and banana with ice cream and whipped cream</div></div><button class="addbtn" data-i="3" data-c="7" onclick="addItem(3,7)">Add</button></div>
+        <div class="item"><div><div class="iname">The Elvis Waffle</div><div class="idesc">Belgium waffle with peanut butter, crisp bacon bits, fresh banana and whipped cream, warm maple syrup</div></div><button class="addbtn" data-i="3" data-c="8" onclick="addItem(3,8)">Add</button></div>
+        <div class="item"><div><div class="iname">French Toast</div><div class="idesc">Four wedges dusted with powdered sugar and cinnamon, warm maple syrup</div></div><button class="addbtn" data-i="3" data-c="9" onclick="addItem(3,9)">Add</button></div>
+        <div class="item"><div><div class="iname">Pina Colada Waffle</div><div class="idesc">Ice cream, coconut and pineapple topped waffle with coconut syrup</div></div><button class="addbtn" data-i="3" data-c="10" onclick="addItem(3,10)">Add</button></div></div></div>
+      <div class="cat" data-cat="4"><button class="catbtn" onclick="toggleCat(4)">Lunch <span class="chev">+</span></button><div class="items" id="cat-4" style="display:none">        <div class="item"><div><div class="iname">Deluxe Quarter-Pound Cheeseburger</div><div class="idesc">All beef patty, lettuce, tomato, onion, pickles and your choice of cheese</div></div><button class="addbtn" data-i="4" data-c="0" onclick="addItem(4,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Patty Melt</div><div class="idesc">Hamburger patty with sauteed onions, jack cheese and bacon on grilled rye bread</div></div><button class="addbtn" data-i="4" data-c="1" onclick="addItem(4,1)">Add</button></div>
+        <div class="item"><div><div class="iname">The Reuben</div></div><button class="addbtn" data-i="4" data-c="2" onclick="addItem(4,2)">Add</button></div>
+        <div class="item"><div><div class="iname">BLT</div></div><button class="addbtn" data-i="4" data-c="3" onclick="addItem(4,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Club Sandwich</div><div class="idesc">Ham, turkey, bacon, cheddar, lettuce, mayo and tomato, triple stacked</div></div><button class="addbtn" data-i="4" data-c="4" onclick="addItem(4,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Desean&#x27;s Chicken Sandwich</div></div><button class="addbtn" data-i="4" data-c="5" onclick="addItem(4,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Sara&#x27;s Mega Melt</div></div><button class="addbtn" data-i="4" data-c="6" onclick="addItem(4,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Breakfast Chimichanga</div><div class="idesc">Taco meat, 2 scrambled eggs, tomatoes, onions, olives and cheddar in a flour tortilla, deep fried, with salsa and sour cream</div></div><button class="addbtn" data-i="4" data-c="7" onclick="addItem(4,7)">Add</button></div></div></div>
+      <div class="cat" data-cat="5"><button class="catbtn" onclick="toggleCat(5)">Salads <span class="chev">+</span></button><div class="items" id="cat-5" style="display:none">        <div class="item"><div><div class="iname">Chef Salad (half)</div></div><button class="addbtn" data-i="5" data-c="0" onclick="addItem(5,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Chicken Salad (half)</div></div><button class="addbtn" data-i="5" data-c="1" onclick="addItem(5,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Taco Salad (half)</div></div><button class="addbtn" data-i="5" data-c="2" onclick="addItem(5,2)">Add</button></div></div></div>
+      <div class="cat" data-cat="6"><button class="catbtn" onclick="toggleCat(6)">Sides <span class="chev">+</span></button><div class="items" id="cat-6" style="display:none">        <div class="item"><div><div class="iname">Sausage</div></div><button class="addbtn" data-i="6" data-c="0" onclick="addItem(6,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Bacon</div></div><button class="addbtn" data-i="6" data-c="1" onclick="addItem(6,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Ham</div></div><button class="addbtn" data-i="6" data-c="2" onclick="addItem(6,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Steak</div></div><button class="addbtn" data-i="6" data-c="3" onclick="addItem(6,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Egg</div></div><button class="addbtn" data-i="6" data-c="4" onclick="addItem(6,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Hash Browns</div></div><button class="addbtn" data-i="6" data-c="5" onclick="addItem(6,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Waffle Fries</div></div><button class="addbtn" data-i="6" data-c="6" onclick="addItem(6,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Batter Dipped Fries</div></div><button class="addbtn" data-i="6" data-c="7" onclick="addItem(6,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Side Salad</div></div><button class="addbtn" data-i="6" data-c="8" onclick="addItem(6,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Fruit Cup</div></div><button class="addbtn" data-i="6" data-c="9" onclick="addItem(6,9)">Add</button></div>
+        <div class="item"><div><div class="iname">Bowl of Soup</div></div><button class="addbtn" data-i="6" data-c="10" onclick="addItem(6,10)">Add</button></div>
+        <div class="item"><div><div class="iname">Slice of Pie</div></div><button class="addbtn" data-i="6" data-c="11" onclick="addItem(6,11)">Add</button></div>
+        <div class="item"><div><div class="iname">Toast</div></div><button class="addbtn" data-i="6" data-c="12" onclick="addItem(6,12)">Add</button></div>
+        <div class="item"><div><div class="iname">English Muffin</div></div><button class="addbtn" data-i="6" data-c="13" onclick="addItem(6,13)">Add</button></div>
+        <div class="item"><div><div class="iname">Biscuit</div></div><button class="addbtn" data-i="6" data-c="14" onclick="addItem(6,14)">Add</button></div>
+        <div class="item"><div><div class="iname">Biscuits (2) and Gravy</div></div><button class="addbtn" data-i="6" data-c="15" onclick="addItem(6,15)">Add</button></div>
+        <div class="item"><div><div class="iname">Sweet Cream Pancake</div></div><button class="addbtn" data-i="6" data-c="16" onclick="addItem(6,16)">Add</button></div>
+        <div class="item"><div><div class="iname">Hollandaise</div></div><button class="addbtn" data-i="6" data-c="17" onclick="addItem(6,17)">Add</button></div>
+        <div class="item"><div><div class="iname">Sausage Gravy</div></div><button class="addbtn" data-i="6" data-c="18" onclick="addItem(6,18)">Add</button></div></div></div>
+      <div class="cat" data-cat="7"><button class="catbtn" onclick="toggleCat(7)">Drinks <span class="chev">+</span></button><div class="items" id="cat-7" style="display:none">        <div class="item"><div><div class="iname">Iced Tea</div></div><button class="addbtn" data-i="7" data-c="0" onclick="addItem(7,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Coffee</div></div><button class="addbtn" data-i="7" data-c="1" onclick="addItem(7,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Hot Chocolate</div><div class="idesc">With whipped cream</div></div><button class="addbtn" data-i="7" data-c="2" onclick="addItem(7,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Cold Brew Sweet Cream Coffee</div></div><button class="addbtn" data-i="7" data-c="3" onclick="addItem(7,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemonade</div></div><button class="addbtn" data-i="7" data-c="4" onclick="addItem(7,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Soft Drinks</div><div class="idesc">Pepsi, Diet Pepsi, Mountain Dew, Sierra Mist, root beer</div></div><button class="addbtn" data-i="7" data-c="5" onclick="addItem(7,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Juice</div></div><button class="addbtn" data-i="7" data-c="6" onclick="addItem(7,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Hot Tea</div></div><button class="addbtn" data-i="7" data-c="7" onclick="addItem(7,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Milk</div></div><button class="addbtn" data-i="7" data-c="8" onclick="addItem(7,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Chocolate Milk</div></div><button class="addbtn" data-i="7" data-c="9" onclick="addItem(7,9)">Add</button></div></div></div>
+</div>
+<div class="social">Find us: <a href="https://www.facebook.com/jennyscafespokane" target="_blank" rel="noopener">Facebook</a></div>
+<div class="note">I'm Suvamsh, I build websites for local restaurants. This is a free demo site concept for Jenny&#x27;s Cafe. Prices are confirmed with the owner before a real site goes live. Ordering is by phone only.</div>
+<div class="backdrop" id="backdrop" onclick="closeSheet()"></div>
+<div class="sheet" id="sheet">
+  <h3>Your pickup list</h3>
+  <div id="list"></div>
+  <div id="readback" class="readback"></div>
+  <div class="final">
+    <a class="callbtn" id="finalcall" href="tel:+15099288055">Call Jenny&#x27;s Cafe to Order</a>
+    <button class="callbtn ghost" style="background:#eee;color:#333;box-shadow:none;border:none" onclick="closeSheet()">Keep browsing</button>
+  </div>
+</div>
+<div class="orderbar" id="orderbar">
+  <div class="cnt"><b id="count">0</b> item<span id="pl">s</span> in your pickup list</div>
+  <button class="viewbtn" onclick="openSheet()">Review</button>
+</div>
+<footer>
+  <div class="fn">Jenny&#x27;s Cafe</div>
+  9425 E Sprague Ave, Spokane Valley, WA 99206<br>
+  <a href="tel:+15099288055" style="color:#b08968">(509) 928-8055</a><br><br>
+  Demo preview built as a website concept. Menu, hours, and prices are confirmed with the owner.<br>
+  Pickup orders are placed by phone.
+</footer>
+<script>
+var MENU = [{"category": "Popular Breakfasts", "items": [{"name": "Eggs Benedict", "desc": "Two eggs layered with ham on an English muffin, smothered in hollandaise sauce and hash browns"}, {"name": "Country Fried Steak", "desc": "Country fried steak covered in sausage gravy, served with two eggs, toast and hash browns"}, {"name": "Meat Lovers Skillet", "desc": "Two scrambled eggs, bacon, sausage, ham and cheddar cheese"}, {"name": "Build Your Own", "desc": "Two eggs plus your choice of meat and side"}, {"name": "Dad's Favorite"}, {"name": "Buried Biscuit"}, {"name": "The BB & G"}, {"name": "The Taco"}, {"name": "Chicken Half Waffle"}, {"name": "The Grandpa Bob"}, {"name": "Kelsey's Loaded Breakfast Sandwich"}, {"name": "Hearty Burrito"}, {"name": "Marathon Man"}, {"name": "Kendrick's Lil Bit"}, {"name": "Momma's Breakfast Burrito"}, {"name": "Jenny's Kitchen Sink", "desc": "Eggs scrambled with mushrooms, green peppers, onions, tomatoes, bacon, sausage and hash browns, topped with cheese, served with toast"}]}, {"category": "Omelets", "items": [{"name": "The Jenny Benny", "desc": "3 eggs filled with ham, onions and cheddar cheese, covered with hollandaise sauce and fresh tomatoes"}, {"name": "Grandma Edie's Chicken Club", "desc": "3 eggs, grilled chicken, bacon, tomatoes, cheddar and jack cheese"}]}, {"category": "Skillet Sensations", "items": [{"name": "Breakfast Skillet", "desc": "Two scrambled eggs, bacon, sausage, ham, onions, mushrooms, green peppers and cheddar cheese"}, {"name": "Savory Skillet", "desc": "Country fried steak, green peppers and onions, covered in gravy and cheddar cheese, served with 2 eggs over easy"}]}, {"category": "Sweet Treats", "items": [{"name": "Short Stack", "desc": "Three sweet cream pancakes with butter, warm maple syrup, powdered sugar and whipped cream"}, {"name": "Kiana's Strawberry Waffle", "desc": "Belgium waffle topped with ice cream, strawberries and whipped cream"}, {"name": "Cinnamon Roll", "desc": "Gooey cinnamon roll with cream cheese frosting, praline pecans, butter, caramel drizzle and cinnamon"}, {"name": "Jade's Cinnamon Roll Waffle", "desc": "Cinnamon waffle with cream cheese frosting, praline pecans, whipped cream, cinnamon and caramel drizzle"}, {"name": "Jacie's Goin' Bananas Waffle", "desc": "Belgium waffle with peanut butter, crisp bacon bits, ice cream, whipped cream, praline pecans and caramel"}, {"name": "Crepe", "desc": "Three classic crepes filled with your choice of filling, dusted with powdered sugar"}, {"name": "Belgium Waffle", "desc": "House made waffle with butter and your choice of homemade syrup"}, {"name": "Kobe's Banana Split Waffle", "desc": "Blueberry, strawberry, apple and banana with ice cream and whipped cream"}, {"name": "The Elvis Waffle", "desc": "Belgium waffle with peanut butter, crisp bacon bits, fresh banana and whipped cream, warm maple syrup"}, {"name": "French Toast", "desc": "Four wedges dusted with powdered sugar and cinnamon, warm maple syrup"}, {"name": "Pina Colada Waffle", "desc": "Ice cream, coconut and pineapple topped waffle with coconut syrup"}]}, {"category": "Lunch", "items": [{"name": "Deluxe Quarter-Pound Cheeseburger", "desc": "All beef patty, lettuce, tomato, onion, pickles and your choice of cheese"}, {"name": "Patty Melt", "desc": "Hamburger patty with sauteed onions, jack cheese and bacon on grilled rye bread"}, {"name": "The Reuben"}, {"name": "BLT"}, {"name": "Club Sandwich", "desc": "Ham, turkey, bacon, cheddar, lettuce, mayo and tomato, triple stacked"}, {"name": "Desean's Chicken Sandwich"}, {"name": "Sara's Mega Melt"}, {"name": "Breakfast Chimichanga", "desc": "Taco meat, 2 scrambled eggs, tomatoes, onions, olives and cheddar in a flour tortilla, deep fried, with salsa and sour cream"}]}, {"category": "Salads", "items": [{"name": "Chef Salad (half)"}, {"name": "Chicken Salad (half)"}, {"name": "Taco Salad (half)"}]}, {"category": "Sides", "items": [{"name": "Sausage"}, {"name": "Bacon"}, {"name": "Ham"}, {"name": "Steak"}, {"name": "Egg"}, {"name": "Hash Browns"}, {"name": "Waffle Fries"}, {"name": "Batter Dipped Fries"}, {"name": "Side Salad"}, {"name": "Fruit Cup"}, {"name": "Bowl of Soup"}, {"name": "Slice of Pie"}, {"name": "Toast"}, {"name": "English Muffin"}, {"name": "Biscuit"}, {"name": "Biscuits (2) and Gravy"}, {"name": "Sweet Cream Pancake"}, {"name": "Hollandaise"}, {"name": "Sausage Gravy"}]}, {"category": "Drinks", "items": [{"name": "Iced Tea"}, {"name": "Coffee"}, {"name": "Hot Chocolate", "desc": "With whipped cream"}, {"name": "Cold Brew Sweet Cream Coffee"}, {"name": "Lemonade"}, {"name": "Soft Drinks", "desc": "Pepsi, Diet Pepsi, Mountain Dew, Sierra Mist, root beer"}, {"name": "Juice"}, {"name": "Hot Tea"}, {"name": "Milk"}, {"name": "Chocolate Milk"}]}];
+var list = {};
+function totalCount(){var n=0;for(var k in list)n+=list[k];return n;}
+function addItem(c,i){var k=c+":"+i;list[k]=(list[k]||0)+1;updateBar();}
+function changeQty(k,d){list[k]=(list[k]||0)+d;if(list[k]<=0)delete list[k];updateBar();renderList();}
+function updateBar(){var n=totalCount();document.getElementById("count").textContent=n;
+document.getElementById("pl").textContent=(n==1?"":"s");
+var bar=document.getElementById("orderbar");
+if(n>0)bar.classList.add("show");else bar.classList.remove("show");
+var fc=document.getElementById("finalcall");
+var items=[];for(var k in list){var p=k.split(":"),it=MENU[p[0]].items[p[1]];items.push(list[k]+"x "+it.name);}
+fc.textContent="Call "+fc.dataset.name+" to Order ("+n+" item"+(n==1?"":"s")+")";
+var rb=document.getElementById("readback");rb.textContent="When you call, read this back: "+items.join(", ")+".";}
+function renderList(){var box=document.getElementById("list");var ks=Object.keys(list);
+if(!ks.length){box.innerHTML='<div class="empty">Your list is empty. Tap Add on any menu item.</div>';return;}
+box.innerHTML=ks.map(function(k){var p=k.split(":"),it=MENU[p[0]].items[p[1]];
+return '<div class="lrow"><div class="nm">'+escHtml(it.name)+'</div><div class="qty"><button onclick="changeQty(\''+k+'\',-1)">-</button><b>'+list[k]+'</b><button onclick="changeQty(\''+k+'\',1)">+</button></div></div>';}).join("");}
+function escHtml(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function openSheet(){renderList();document.getElementById("sheet").classList.add("show");document.getElementById("backdrop").classList.add("show");}
+function closeSheet(){document.getElementById("sheet").classList.remove("show");document.getElementById("backdrop").classList.remove("show");}
+function toggleCat(i){var el=document.getElementById("cat-"+i);var btn=el.previousElementSibling;
+var open=el.style.display!=="none";el.style.display=open?"none":"block";
+btn.querySelector(".chev").textContent=open?"+":"-";}
+document.getElementById("finalcall").dataset.name="Jenny&#x27;s Cafe";
+</script>
+</body>
+</html>

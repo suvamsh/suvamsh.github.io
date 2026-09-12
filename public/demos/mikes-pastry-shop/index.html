@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mike&#x27;s Pastry Shop</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#faf6f0;color:#222;-webkit-text-size-adjust:100%}
+.hero{background:linear-gradient(160deg,#6b4a2f,#3a2418);color:#fff;padding:34px 20px 30px;text-align:center}
+.hero .demo{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.hero h1{font-size:30px;line-height:1.15;margin-bottom:8px}
+.hero .tag{opacity:.92;font-size:15px;margin-bottom:16px}
+.callbtn{display:inline-block;background:#c08457;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 30px;border-radius:12px;margin:6px 4px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.callbtn.ghost{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.5);box-shadow:none}
+.info{background:#fff;margin:-14px 14px 0;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.10)}
+.info .addr{font-size:14px;margin-bottom:6px}
+.info .phone{font-size:16px;font-weight:700}
+.info .phone a{color:#6b4a2f;text-decoration:none}
+.hours{margin-top:10px;font-size:13.5px}
+.hrow{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed #eee}
+.hrow:last-child{border-bottom:none}
+.menu{padding:22px 16px 10px}
+.menu h2{text-align:center;font-size:22px;margin-bottom:4px;color:#6b4a2f}
+.menu .sub{text-align:center;font-size:13px;color:#777;margin-bottom:16px}
+.cat{margin-bottom:10px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.catbtn{width:100%;background:#fff;border:none;font-size:16px;font-weight:700;color:#6b4a2f;padding:15px 16px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.chev{color:#c08457;font-size:20px}
+.items{padding:0 16px 8px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-top:1px solid #f1ece4;gap:10px}
+.iname{font-weight:600;font-size:15px}
+.idesc{font-size:12.5px;color:#777;margin-top:2px}
+.iprice{font-size:13px;color:#c08457;font-weight:600;margin-top:2px}
+.addbtn{background:#c08457;color:#fff;border:none;font-weight:700;font-size:13px;padding:9px 16px;border-radius:9px;cursor:pointer;flex-shrink:0}
+.orderbar{position:fixed;left:0;right:0;bottom:0;background:#1c1917;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 -4px 18px rgba(0,0,0,.25);transform:translateY(110%);transition:transform .25s}
+.orderbar.show{transform:none}
+.orderbar .cnt{flex:1;font-size:15px}
+.orderbar .cnt b{font-size:19px;color:#c08457}
+.viewbtn{background:#fff;color:#1c1917;border:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:10px;cursor:pointer}
+.sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;max-height:78%;overflow:auto;padding:20px;display:none;box-shadow:0 -8px 30px rgba(0,0,0,.3)}
+.sheet.show{display:block}
+.sheet h3{font-size:19px;margin-bottom:12px}
+.lrow{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #f1ece4;font-size:15px}
+.lrow .nm{flex:1}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:30px;height:30px;border-radius:8px;border:1px solid #ddd;background:#fafafa;font-size:17px;cursor:pointer}
+.qty b{min-width:20px;text-align:center}
+.empty{color:#888;font-size:14px;text-align:center;padding:16px 0}
+.final{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.readback{font-size:13.5px;color:#555;line-height:1.6;margin-top:10px}
+footer{background:#1c1917;color:#bbb;text-align:center;font-size:12px;padding:26px 18px 90px;line-height:1.7}
+footer .fn{color:#fff;font-weight:700;font-size:14px}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none}
+.backdrop.show{display:block}
+.social{padding:0 16px 18px;text-align:center;font-size:13.5px;color:#666}
+.social a{color:#c08457;font-weight:600}
+.note{padding:0 16px 20px;text-align:center;font-size:13px;color:#666;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="hero">
+  <span class="demo">Demo website concept</span>
+  <h1>Mike&#x27;s Pastry Shop</h1>
+  <div class="tag">We are a family owned and operated bakery. We specialize in Cakes, Pastries, Cookies and many other baked goods.</div>
+  <a class="callbtn" href="tel:+19257573333">Call to Order: (925) 757-3333</a>
+</div>
+<div class="info">
+  <div class="addr">1872 A St, Antioch, CA 94509</div>
+  <div class="phone"><a href="tel:+19257573333">(925) 757-3333</a></div>
+  <div class="hours"><div class="hrow"><span>Tuesday - Saturday</span><span>7:00 AM - 3:00 PM</span></div><div class="hrow"><span>Sunday - Monday</span><span>Closed</span></div></div>
+</div>
+<div class="menu">
+  <h2>Menu</h2>
+  <div class="sub">Add items to your pickup list, then call to place the order.</div>
+      <div class="cat" data-cat="0"><button class="catbtn" onclick="toggleCat(0)">Cakes <span class="chev">+</span></button><div class="items" id="cat-0" style="display:none">        <div class="item"><div><div class="iname">Strawberry Chiffon Cake</div></div><button class="addbtn" data-i="0" data-c="0" onclick="addItem(0,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemon Chiffon Cake</div><div class="idesc">Chiffon cake, lemon filling and whipped cream icing. Almond crunch on sides</div></div><button class="addbtn" data-i="0" data-c="1" onclick="addItem(0,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Half and Half Cake with Buttercream Frosting</div></div><button class="addbtn" data-i="0" data-c="2" onclick="addItem(0,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Marble Cake with Strawberries and Whip Cream</div></div><button class="addbtn" data-i="0" data-c="3" onclick="addItem(0,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Wedding Cakes and Custom Cakes</div><div class="idesc">We make big cakes</div></div><button class="addbtn" data-i="0" data-c="4" onclick="addItem(0,4)">Add</button></div>
+        <div class="item"><div><div class="iname">8&quot; Fudge Cake</div></div><button class="addbtn" data-i="0" data-c="5" onclick="addItem(0,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Carrot Cake</div></div><button class="addbtn" data-i="0" data-c="6" onclick="addItem(0,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Pound Cakes</div></div><button class="addbtn" data-i="0" data-c="7" onclick="addItem(0,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Cake Cups</div></div><button class="addbtn" data-i="0" data-c="8" onclick="addItem(0,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Cheesecake</div><div class="idesc">Add a fruit topping if you choose</div></div><button class="addbtn" data-i="0" data-c="9" onclick="addItem(0,9)">Add</button></div></div></div>
+      <div class="cat" data-cat="1"><button class="catbtn" onclick="toggleCat(1)">Pies <span class="chev">+</span></button><div class="items" id="cat-1" style="display:none">        <div class="item"><div><div class="iname">Coconut Cream Pie</div><div class="idesc">Call us today for tomorrow!</div></div><button class="addbtn" data-i="1" data-c="0" onclick="addItem(1,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Banana Cream Pie</div><div class="idesc">Order today for pick up tomorrow!</div></div><button class="addbtn" data-i="1" data-c="1" onclick="addItem(1,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Cream Pies</div><div class="idesc">100% whipped cream, never topping</div></div><button class="addbtn" data-i="1" data-c="2" onclick="addItem(1,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Chocolate Cream Pie</div></div><button class="addbtn" data-i="1" data-c="3" onclick="addItem(1,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Berry Pie</div></div><button class="addbtn" data-i="1" data-c="4" onclick="addItem(1,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Pumpkin Pie</div></div><button class="addbtn" data-i="1" data-c="5" onclick="addItem(1,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Apple Pie</div></div><button class="addbtn" data-i="1" data-c="6" onclick="addItem(1,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Cherry Pie</div></div><button class="addbtn" data-i="1" data-c="7" onclick="addItem(1,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemon Meringue Tart</div></div><button class="addbtn" data-i="1" data-c="8" onclick="addItem(1,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemon Pie</div></div><button class="addbtn" data-i="1" data-c="9" onclick="addItem(1,9)">Add</button></div></div></div>
+      <div class="cat" data-cat="2"><button class="catbtn" onclick="toggleCat(2)">Pastries and Tarts <span class="chev">+</span></button><div class="items" id="cat-2" style="display:none">        <div class="item"><div><div class="iname">UhOhs</div></div><button class="addbtn" data-i="2" data-c="0" onclick="addItem(2,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Paris Brest</div></div><button class="addbtn" data-i="2" data-c="1" onclick="addItem(2,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Strudels</div><div class="idesc">Pre order recommended, they sell fast</div></div><button class="addbtn" data-i="2" data-c="2" onclick="addItem(2,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Butter Croissants</div><div class="idesc">All butter</div></div><button class="addbtn" data-i="2" data-c="3" onclick="addItem(2,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Butter Croissant Sandwiches</div></div><button class="addbtn" data-i="2" data-c="4" onclick="addItem(2,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Napoleons (Chocolate Cream)</div></div><button class="addbtn" data-i="2" data-c="5" onclick="addItem(2,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Eclairs</div></div><button class="addbtn" data-i="2" data-c="6" onclick="addItem(2,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Cannoli</div></div><button class="addbtn" data-i="2" data-c="7" onclick="addItem(2,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Creampuffs</div></div><button class="addbtn" data-i="2" data-c="8" onclick="addItem(2,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Apple Strudel</div></div><button class="addbtn" data-i="2" data-c="9" onclick="addItem(2,9)">Add</button></div>
+        <div class="item"><div><div class="iname">Raspberry Ring</div></div><button class="addbtn" data-i="2" data-c="10" onclick="addItem(2,10)">Add</button></div>
+        <div class="item"><div><div class="iname">Pandowdy</div></div><button class="addbtn" data-i="2" data-c="11" onclick="addItem(2,11)">Add</button></div>
+        <div class="item"><div><div class="iname">Raspberry Almond Tart</div></div><button class="addbtn" data-i="2" data-c="12" onclick="addItem(2,12)">Add</button></div>
+        <div class="item"><div><div class="iname">Fruit and Custard Tart</div></div><button class="addbtn" data-i="2" data-c="13" onclick="addItem(2,13)">Add</button></div>
+        <div class="item"><div><div class="iname">Banana Cream Tart</div></div><button class="addbtn" data-i="2" data-c="14" onclick="addItem(2,14)">Add</button></div>
+        <div class="item"><div><div class="iname">Raspberry Cheese Tart</div></div><button class="addbtn" data-i="2" data-c="15" onclick="addItem(2,15)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemon Cream Tart</div></div><button class="addbtn" data-i="2" data-c="16" onclick="addItem(2,16)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemon Tart</div></div><button class="addbtn" data-i="2" data-c="17" onclick="addItem(2,17)">Add</button></div>
+        <div class="item"><div><div class="iname">Blueberry Tart</div></div><button class="addbtn" data-i="2" data-c="18" onclick="addItem(2,18)">Add</button></div>
+        <div class="item"><div><div class="iname">Coconut Cream Tart</div></div><button class="addbtn" data-i="2" data-c="19" onclick="addItem(2,19)">Add</button></div>
+        <div class="item"><div><div class="iname">Mocha Mousse Cups</div></div><button class="addbtn" data-i="2" data-c="20" onclick="addItem(2,20)">Add</button></div>
+        <div class="item"><div><div class="iname">Strawberry Shortcake</div></div><button class="addbtn" data-i="2" data-c="21" onclick="addItem(2,21)">Add</button></div></div></div>
+      <div class="cat" data-cat="3"><button class="catbtn" onclick="toggleCat(3)">Cookies, Breads, and Breakfast <span class="chev">+</span></button><div class="items" id="cat-3" style="display:none">        <div class="item"><div><div class="iname">Bigfoot Cookies</div></div><button class="addbtn" data-i="3" data-c="0" onclick="addItem(3,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Chocolate Chip Cookies</div></div><button class="addbtn" data-i="3" data-c="1" onclick="addItem(3,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Divinity Cookies</div></div><button class="addbtn" data-i="3" data-c="2" onclick="addItem(3,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Cookie Trays</div></div><button class="addbtn" data-i="3" data-c="3" onclick="addItem(3,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Sesame Dinner Rolls</div></div><button class="addbtn" data-i="3" data-c="4" onclick="addItem(3,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Plain Dinner Rolls</div></div><button class="addbtn" data-i="3" data-c="5" onclick="addItem(3,5)">Add</button></div>
+        <div class="item"><div><div class="iname">Poppyseed Dinner Rolls</div></div><button class="addbtn" data-i="3" data-c="6" onclick="addItem(3,6)">Add</button></div>
+        <div class="item"><div><div class="iname">Parker House Rolls</div></div><button class="addbtn" data-i="3" data-c="7" onclick="addItem(3,7)">Add</button></div>
+        <div class="item"><div><div class="iname">Portuguese Sweet Bread</div><div class="idesc">Made with local olive oil, great for sandwiches</div></div><button class="addbtn" data-i="3" data-c="8" onclick="addItem(3,8)">Add</button></div>
+        <div class="item"><div><div class="iname">Irish Soda Bread</div><div class="idesc">Seasonal</div></div><button class="addbtn" data-i="3" data-c="9" onclick="addItem(3,9)">Add</button></div>
+        <div class="item"><div><div class="iname">Ube Coconut Crunch Scone</div></div><button class="addbtn" data-i="3" data-c="10" onclick="addItem(3,10)">Add</button></div>
+        <div class="item"><div><div class="iname">Raspberry Muffins</div></div><button class="addbtn" data-i="3" data-c="11" onclick="addItem(3,11)">Add</button></div>
+        <div class="item"><div><div class="iname">Blueberry Muffins</div></div><button class="addbtn" data-i="3" data-c="12" onclick="addItem(3,12)">Add</button></div>
+        <div class="item"><div><div class="iname">Lemon Muffin</div></div><button class="addbtn" data-i="3" data-c="13" onclick="addItem(3,13)">Add</button></div></div></div>
+      <div class="cat" data-cat="4"><button class="catbtn" onclick="toggleCat(4)">Savory and More <span class="chev">+</span></button><div class="items" id="cat-4" style="display:none">        <div class="item"><div><div class="iname">Chicken Pot Pies</div></div><button class="addbtn" data-i="4" data-c="0" onclick="addItem(4,0)">Add</button></div>
+        <div class="item"><div><div class="iname">Empanadas</div></div><button class="addbtn" data-i="4" data-c="1" onclick="addItem(4,1)">Add</button></div>
+        <div class="item"><div><div class="iname">Quiche</div></div><button class="addbtn" data-i="4" data-c="2" onclick="addItem(4,2)">Add</button></div>
+        <div class="item"><div><div class="iname">Coffee</div></div><button class="addbtn" data-i="4" data-c="3" onclick="addItem(4,3)">Add</button></div>
+        <div class="item"><div><div class="iname">Tea</div></div><button class="addbtn" data-i="4" data-c="4" onclick="addItem(4,4)">Add</button></div>
+        <div class="item"><div><div class="iname">Chocolate Frappe</div></div><button class="addbtn" data-i="4" data-c="5" onclick="addItem(4,5)">Add</button></div></div></div>
+</div>
+<div class="social">Find us: <a href="https://www.facebook.com/mikespastryshop" target="_blank" rel="noopener">Facebook</a></div>
+<div class="note">I'm Suvamsh, I build websites for local bakeries. This is a free demo site concept for Mike&#x27;s Pastry Shop. Prices are confirmed with the owner before a real site goes live. Ordering is by phone only.</div>
+<div class="backdrop" id="backdrop" onclick="closeSheet()"></div>
+<div class="sheet" id="sheet">
+  <h3>Your pickup list</h3>
+  <div id="list"></div>
+  <div id="readback" class="readback"></div>
+  <div class="final">
+    <a class="callbtn" id="finalcall" href="tel:+19257573333">Call Mike&#x27;s Pastry Shop to Order</a>
+    <button class="callbtn ghost" style="background:#eee;color:#333;box-shadow:none;border:none" onclick="closeSheet()">Keep browsing</button>
+  </div>
+</div>
+<div class="orderbar" id="orderbar">
+  <div class="cnt"><b id="count">0</b> item<span id="pl">s</span> in your pickup list</div>
+  <button class="viewbtn" onclick="openSheet()">Review</button>
+</div>
+<footer>
+  <div class="fn">Mike&#x27;s Pastry Shop</div>
+  1872 A St, Antioch, CA 94509<br>
+  <a href="tel:+19257573333" style="color:#c08457">(925) 757-3333</a><br><br>
+  Demo preview built as a website concept. Menu, hours, and prices are confirmed with the owner.<br>
+  Pickup orders are placed by phone.
+</footer>
+<script>
+var MENU = [{"category": "Cakes", "items": [{"name": "Strawberry Chiffon Cake"}, {"name": "Lemon Chiffon Cake", "desc": "Chiffon cake, lemon filling and whipped cream icing. Almond crunch on sides"}, {"name": "Half and Half Cake with Buttercream Frosting"}, {"name": "Marble Cake with Strawberries and Whip Cream"}, {"name": "Wedding Cakes and Custom Cakes", "desc": "We make big cakes"}, {"name": "8\" Fudge Cake"}, {"name": "Carrot Cake"}, {"name": "Pound Cakes"}, {"name": "Cake Cups"}, {"name": "Cheesecake", "desc": "Add a fruit topping if you choose"}]}, {"category": "Pies", "items": [{"name": "Coconut Cream Pie", "desc": "Call us today for tomorrow!"}, {"name": "Banana Cream Pie", "desc": "Order today for pick up tomorrow!"}, {"name": "Cream Pies", "desc": "100% whipped cream, never topping"}, {"name": "Chocolate Cream Pie"}, {"name": "Berry Pie"}, {"name": "Pumpkin Pie"}, {"name": "Apple Pie"}, {"name": "Cherry Pie"}, {"name": "Lemon Meringue Tart"}, {"name": "Lemon Pie"}]}, {"category": "Pastries and Tarts", "items": [{"name": "UhOhs"}, {"name": "Paris Brest"}, {"name": "Strudels", "desc": "Pre order recommended, they sell fast"}, {"name": "Butter Croissants", "desc": "All butter"}, {"name": "Butter Croissant Sandwiches"}, {"name": "Napoleons (Chocolate Cream)"}, {"name": "Eclairs"}, {"name": "Cannoli"}, {"name": "Creampuffs"}, {"name": "Apple Strudel"}, {"name": "Raspberry Ring"}, {"name": "Pandowdy"}, {"name": "Raspberry Almond Tart"}, {"name": "Fruit and Custard Tart"}, {"name": "Banana Cream Tart"}, {"name": "Raspberry Cheese Tart"}, {"name": "Lemon Cream Tart"}, {"name": "Lemon Tart"}, {"name": "Blueberry Tart"}, {"name": "Coconut Cream Tart"}, {"name": "Mocha Mousse Cups"}, {"name": "Strawberry Shortcake"}]}, {"category": "Cookies, Breads, and Breakfast", "items": [{"name": "Bigfoot Cookies"}, {"name": "Chocolate Chip Cookies"}, {"name": "Divinity Cookies"}, {"name": "Cookie Trays"}, {"name": "Sesame Dinner Rolls"}, {"name": "Plain Dinner Rolls"}, {"name": "Poppyseed Dinner Rolls"}, {"name": "Parker House Rolls"}, {"name": "Portuguese Sweet Bread", "desc": "Made with local olive oil, great for sandwiches"}, {"name": "Irish Soda Bread", "desc": "Seasonal"}, {"name": "Ube Coconut Crunch Scone"}, {"name": "Raspberry Muffins"}, {"name": "Blueberry Muffins"}, {"name": "Lemon Muffin"}]}, {"category": "Savory and More", "items": [{"name": "Chicken Pot Pies"}, {"name": "Empanadas"}, {"name": "Quiche"}, {"name": "Coffee"}, {"name": "Tea"}, {"name": "Chocolate Frappe"}]}];
+var list = {};
+function totalCount(){var n=0;for(var k in list)n+=list[k];return n;}
+function addItem(c,i){var k=c+":"+i;list[k]=(list[k]||0)+1;updateBar();}
+function changeQty(k,d){list[k]=(list[k]||0)+d;if(list[k]<=0)delete list[k];updateBar();renderList();}
+function updateBar(){var n=totalCount();document.getElementById("count").textContent=n;
+document.getElementById("pl").textContent=(n==1?"":"s");
+var bar=document.getElementById("orderbar");
+if(n>0)bar.classList.add("show");else bar.classList.remove("show");
+var fc=document.getElementById("finalcall");
+var items=[];for(var k in list){var p=k.split(":"),it=MENU[p[0]].items[p[1]];items.push(list[k]+"x "+it.name);}
+fc.textContent="Call "+fc.dataset.name+" to Order ("+n+" item"+(n==1?"":"s")+")";
+var rb=document.getElementById("readback");rb.textContent="When you call, read this back: "+items.join(", ")+".";}
+function renderList(){var box=document.getElementById("list");var ks=Object.keys(list);
+if(!ks.length){box.innerHTML='<div class="empty">Your list is empty. Tap Add on any menu item.</div>';return;}
+box.innerHTML=ks.map(function(k){var p=k.split(":"),it=MENU[p[0]].items[p[1]];
+return '<div class="lrow"><div class="nm">'+escHtml(it.name)+'</div><div class="qty"><button onclick="changeQty(\''+k+'\',-1)">-</button><b>'+list[k]+'</b><button onclick="changeQty(\''+k+'\',1)">+</button></div></div>';}).join("");}
+function escHtml(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function openSheet(){renderList();document.getElementById("sheet").classList.add("show");document.getElementById("backdrop").classList.add("show");}
+function closeSheet(){document.getElementById("sheet").classList.remove("show");document.getElementById("backdrop").classList.remove("show");}
+function toggleCat(i){var el=document.getElementById("cat-"+i);var btn=el.previousElementSibling;
+var open=el.style.display!=="none";el.style.display=open?"none":"block";
+btn.querySelector(".chev").textContent=open?"+":"-";}
+document.getElementById("finalcall").dataset.name="Mike&#x27;s Pastry Shop";
+</script>
+</body>
+</html>
