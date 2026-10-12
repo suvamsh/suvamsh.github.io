@@ -79,7 +79,7 @@ export default function LaunchesPage() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${launch.title}`}
-                className="group block bg-[#020b14]"
+                className="group block bg-[#16161e]"
               >
                 <Image
                   src={launch.image}

@@ -70,7 +70,7 @@ const bootLines = [
   "mounting /home/suvamsh",
   "loading posts",
   "checking launches",
-  "theme: canvas + primary + ocean + tertiary",
+  "theme: tokyo night",
   "ready"
 ];
 
@@ -374,12 +374,15 @@ export function TerminalHome({ posts, launches }: TerminalHomeProps) {
         run: () => (
           <div className="terminal-swatches" aria-label="Theme colors">
             {[
-              ["canvas", "#001326"],
-              ["panel", "#08203a"],
-              ["ink", "#dbe2e6"],
-              ["primary", "#2f78b8"],
-              ["ocean", "#69be28"],
-              ["tertiary", "#a5acaf"]
+              ["canvas", "#1a1b26"],
+              ["panel", "#24283b"],
+              ["ink", "#c0caf5"],
+              ["primary", "#7aa2f7"],
+              ["violet", "#bb9af7"],
+              ["sky", "#7dcfff"],
+              ["ocean", "#9ece6a"],
+              ["peach", "#ff9e64"],
+              ["tertiary", "#9aa5ce"]
             ].map(([name, color]) => (
               <span key={name}>
                 <i style={{ backgroundColor: color }} />

@@ -4,16 +4,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: "#001326",
-        panel: "#08203a",
-        ink: "#dbe2e6",
-        accent: "#2f78b8",
-        clay: "#8f9aa0",
-        sunrise: "#a5acaf",
-        ocean: "#69be28",
-        primary: "#2f78b8",
-        secondary: "#69be28",
-        tertiary: "#a5acaf"
+        canvas: "#1a1b26",
+        panel: "#24283b",
+        ink: "#c0caf5",
+        accent: "#7aa2f7",
+        clay: "#565f89",
+        sunrise: "#9aa5ce",
+        ocean: "#9ece6a",
+        primary: "#7aa2f7",
+        secondary: "#9ece6a",
+        tertiary: "#9aa5ce",
+        violet: "#bb9af7",
+        sky: "#7dcfff",
+        mint: "#73daca",
+        peach: "#ff9e64",
+        gold: "#e0af68",
+        rose: "#f7768e",
+        comment: "#565f89"
       },
       fontFamily: {
         sans: ["JetBrains Mono Variable", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
@@ -29,8 +36,8 @@ module.exports = {
         "fade-up": "fade-up 0.65s ease forwards"
       },
       boxShadow: {
-        card: "0 16px 40px rgba(0, 34, 68, 0.35)",
-        neon: "0 0 22px rgba(47, 120, 184, 0.35)"
+        card: "0 16px 40px rgba(10, 10, 18, 0.45)",
+        neon: "0 0 22px rgba(122, 162, 247, 0.35)"
       }
     }
   },
