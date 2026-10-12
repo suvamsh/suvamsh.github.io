@@ -25,7 +25,7 @@ export const launches: Launch[] = [
   {
     title: "Screamer",
     summary: "A fast, free speech-to-text app that runs locally and works anywhere you type.",
-    href: "https://www.screamer.app",
+    href: "https://github.com/suvamsh/screamer",
     image: "/images/launches/screamer.png",
     imageAlt: "Screamer landing page screenshot showing the product hero and feature highlights"
   }
