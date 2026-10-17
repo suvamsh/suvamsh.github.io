@@ -269,15 +269,12 @@ function ChainsHero() {
     // Paint one frame synchronously so the necklace is visible even if
     // requestAnimationFrame is throttled or deferred (mobile Safari does
     // this in low-power / not-yet-interacted states). frame() schedules the
-    // next frame itself; drawOnce keeps exactly one chain alive and stops
-    // it for reduced-motion users.
+    // next frame itself; drawOnce keeps exactly one chain alive and keeps exactly one chain alive.
     resize();
     lastMs = performance.now();
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const drawOnce = () => {
       cancelAnimationFrame(raf);
       frame(performance.now());
-      if (reduced) cancelAnimationFrame(raf);
     };
     drawOnce();
 
