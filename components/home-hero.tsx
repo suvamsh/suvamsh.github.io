@@ -64,8 +64,14 @@ function ChainsHero() {
       const r = section!.getBoundingClientRect();
       W = Math.max(320, r.width);
       H = Math.max(300, r.height);
-      canvas!.width = Math.round(W * DPR);
-      canvas!.height = Math.round(H * DPR);
+      const nw = Math.round(W * DPR);
+      const nh = Math.round(H * DPR);
+      // Assigning canvas width/height clears the bitmap even when the value
+      // is unchanged, so only touch them on a real size change.
+      if (canvas!.width !== nw || canvas!.height !== nh) {
+        canvas!.width = nw;
+        canvas!.height = nh;
+      }
       measure();
     }
     function rot(x: number, y: number, px: number, py: number, a: number): Pt {
@@ -260,27 +266,68 @@ function ChainsHero() {
       pointer.active = false;
     }
 
+    // Paint one frame synchronously so the necklace is visible even if
+    // requestAnimationFrame is throttled or deferred (mobile Safari does
+    // this in low-power / not-yet-interacted states). frame() schedules the
+    // next frame itself; drawOnce keeps exactly one chain alive and stops
+    // it for reduced-motion users.
     resize();
+    lastMs = performance.now();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      lastMs = performance.now();
-      const keep = raf;
-      frame(lastMs + 16);
+    const drawOnce = () => {
       cancelAnimationFrame(raf);
-      raf = keep;
-    } else {
-      raf = requestAnimationFrame(frame);
-    }
+      frame(performance.now());
+      if (reduced) cancelAnimationFrame(raf);
+    };
+    drawOnce();
+
+    // Keep the backing store matched to the hero box: mobile Safari resizes
+    // the hero as its URL bar collapses, and a stale size leaves the canvas
+    // scaled or blank.
+    const ro = new ResizeObserver(() => {
+      resize();
+      drawOnce();
+    });
+    ro.observe(section);
+    // Re-measure once layout settles (image decode, toolbar state).
+    const settleTimers = [300, 1200].map((ms) =>
+      window.setTimeout(() => {
+        resize();
+        drawOnce();
+      }, ms)
+    );
+    // Self-check: if the canvas somehow stayed empty, force a redraw.
+    const selfCheck = window.setTimeout(() => {
+      try {
+        const d = ctx.getImageData(0, 0, Math.min(64, canvas.width), Math.min(64, canvas.height)).data;
+        let lit = false;
+        for (let i = 0; i < d.length; i += 4) {
+          if (d[i] + d[i + 1] + d[i + 2] > 40) { lit = true; break; }
+        }
+        if (!lit) {
+          resize();
+          drawOnce();
+        }
+      } catch {
+        /* canvas readback unavailable: nothing to do */
+      }
+    }, 700);
+
     window.addEventListener("resize", resize);
     section.addEventListener("pointermove", onPoint);
     section.addEventListener("pointerdown", onPoint);
     section.addEventListener("pointerleave", onLeave);
+    section.addEventListener("pointercancel", onLeave);
     return () => {
       cancelAnimationFrame(raf);
+      ro.disconnect();
+      settleTimers.forEach((id) => window.clearTimeout(id));
+      window.clearTimeout(selfCheck);
       window.removeEventListener("resize", resize);
       section.removeEventListener("pointermove", onPoint);
       section.removeEventListener("pointerdown", onPoint);
       section.removeEventListener("pointerleave", onLeave);
+      section.removeEventListener("pointercancel", onLeave);
     };
   }, []);
 
@@ -288,7 +335,7 @@ function ChainsHero() {
     <section
       ref={sectionRef}
       className="relative overflow-hidden rounded-3xl border border-white/10 bg-black"
-      style={{ minHeight: "min(88svh, 640px)" }}
+      style={{ minHeight: "min(88svh, 640px)", touchAction: "pan-y" }}
       aria-label="Introduction"
     >
       <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" aria-hidden="true" />
