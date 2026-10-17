@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navItems = [
-  { href: "/", label: "home" },
-  { href: "/launches", label: "launches" },
-  { href: "/about", label: "about" },
-  { href: "/blog", label: "blog" }
+  { href: "/", label: "Home" },
+  { href: "/launches", label: "Launches" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" }
 ];
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -36,8 +36,9 @@ export function SiteHeader() {
     <header className="site-topbar">
       <nav className="terminal-nav" aria-label="Primary navigation">
         <Link href="/" className="terminal-brand" onClick={() => setIsMenuOpen(false)}>
-          <span>suvamsh@site</span>
-          <span className="text-tertiary/70">:~$</span>
+          <span>
+            suvamsh<span className="text-gold">.</span>com
+          </span>
         </Link>
 
         <button
@@ -62,7 +63,7 @@ export function SiteHeader() {
                   className={clsx("terminal-nav-link", isActive && "is-active")}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  /{item.label}
+                  {item.label}
                 </Link>
               </li>
             );
@@ -82,7 +83,7 @@ export function SiteHeader() {
                     onClick={() => setIsMenuOpen(false)}
                     tabIndex={isMenuOpen ? 0 : -1}
                   >
-                    /{item.label}
+                    {item.label}
                   </Link>
                 </li>
               );

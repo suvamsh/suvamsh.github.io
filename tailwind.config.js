@@ -4,27 +4,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: "#1a1b26",
-        panel: "#24283b",
-        ink: "#c0caf5",
-        accent: "#7aa2f7",
-        clay: "#565f89",
-        sunrise: "#9aa5ce",
-        ocean: "#9ece6a",
-        primary: "#7aa2f7",
-        secondary: "#9ece6a",
-        tertiary: "#9aa5ce",
-        violet: "#bb9af7",
-        sky: "#7dcfff",
-        mint: "#73daca",
-        peach: "#ff9e64",
-        gold: "#e0af68",
-        rose: "#f7768e",
-        comment: "#565f89"
+        canvas: "#000000",
+        panel: "#0d0d0f",
+        ink: "#f5f5f5",
+        accent: "#d4af37",
+        clay: "#525252",
+        sunrise: "#a3a3a3",
+        ocean: "#e9c766",
+        primary: "#d4af37",
+        secondary: "#e9c766",
+        tertiary: "#a3a3a3",
+        violet: "#d4af37",
+        sky: "#ffffff",
+        mint: "#e5e5e5",
+        peach: "#f0d089",
+        gold: "#d4af37",
+        rose: "#d9d9d9",
+        comment: "#737373"
       },
       fontFamily: {
-        sans: ["JetBrains Mono Variable", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
-        display: ["Orbitron Variable", "JetBrains Mono Variable", "ui-sans-serif", "system-ui", "sans-serif"]
+        sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
       },
       keyframes: {
         "fade-up": {
@@ -36,8 +36,8 @@ module.exports = {
         "fade-up": "fade-up 0.65s ease forwards"
       },
       boxShadow: {
-        card: "0 16px 40px rgba(10, 10, 18, 0.45)",
-        neon: "0 0 22px rgba(122, 162, 247, 0.35)"
+        card: "0 16px 40px rgba(0, 0, 0, 0.55)",
+        neon: "0 0 22px rgba(212, 175, 55, 0.28)"
       }
     }
   },
